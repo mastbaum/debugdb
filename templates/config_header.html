@@ -1,0 +1,14 @@
+<h3>Configuration</h3>
+<dl>
+ <dt>Crate ID: {config.crate_id}</dt>
+ <dt>Slot: {config.slot}</dt>
+ <dt>FEC ID: {config.fec_id}</dt>
+ <dt>Daughterboards</dt>
+  <dd>
+   <ul>
+    {#config.db}
+     <li>{db_id}{~n} (Slot {db_slot})
+    {/config.db}
+   </ul>
+  </dd>
+</dl>
