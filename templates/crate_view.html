@@ -1,12 +1,58 @@
-<h1>hi</h1>
-<table border=1 rows="19" cols="32">
-{#rows}
-<tr>
-<td>{crate_id}</td>
-{#slots}
-<td>{slot_id}</td>
-{/slots}
-</tr>
-{/rows}
-</table>
+<h1 style="margin-bottom:10px;">CrateView&trade;</h1>
+<div style="display:table;border:solid 1px black;width:100%;height:100%">
+ <div style="display:table-row;text-align:center;background:#eee;font-size:larger">
+  <div style="display:table-cell">&nbsp;</div>
+  <div style="display:table-cell">Slot 0</div>
+  <div style="display:table-cell">Slot 1</div>
+  <div style="display:table-cell">Slot 2</div>
+  <div style="display:table-cell">Slot 3</div>
+  <div style="display:table-cell">Slot 4</div>
+  <div style="display:table-cell">Slot 5</div>
+  <div style="display:table-cell">Slot 6</div>
+  <div style="display:table-cell">Slot 7</div>
+  <div style="display:table-cell">Slot 8</div>
+  <div style="display:table-cell">Slot 9</div>
+  <div style="display:table-cell">Slot 10</div>
+  <div style="display:table-cell">Slot 11</div>
+  <div style="display:table-cell">Slot 12</div>
+  <div style="display:table-cell">Slot 13</div>
+  <div style="display:table-cell">Slot 14</div>
+  <div style="display:table-cell">Slot 15</div>
+ </div>
+ {#rows}
+ <div style="display:table-row;width:100%;height:100%">
+  <div style="display:table-cell;background:#eee;font-size:large;text-align:right;vertical-align:middle;width:2%;height:100%">
+   <a id=crate_{crate_id}_toggle style="color:#ccc;cursor:pointer;" onClick="javascript:togglePane('crate_{crate_id}');">
+    {crate_id}
+   </a>
+  </div>
+  {#slots}
+   <div style="display:table-cell;vertical-align:middle;width:5%;height:100%">
+    <div id=crate_{crate_id}_{slot_id} style="height:100%;display:none;">
+    {?row.value}
+     {#row.value.pass}
+      <span style="display:block;background:#90ee90;border:solid 1px black">
+     {:else}
+      <span style="display:block;background:pink;border:solid 1px black">
+     {/row.value.pass}
+     <dl>
+     <dt>{row.value.short_created}</dt>
+     <dt>FEC <a href="{baseURL}/fec?key=&#34;{row.value.config.fec_id}&#34;">{row.value.config.fec_id}</a></dt>
+     <dt>DBs</dt>
+     <dd>
+      {#row.value.config.db}
+       <a href="{baseURL}/db?key=&#34;{db_id}&#34;">{db_id}</a>
+      {/row.value.config.db}
+     </dd>
+     </dl>
+    {:else}
+     <span style="display:block;background:#ddd;border:solid 1px black;height:100%">&nbsp;
+    {/row.value}
+     </span>
+    </div>
+   </div>
+  {/slots}
+ </div>
+ {/rows}
+</div>
 
