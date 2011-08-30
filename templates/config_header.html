@@ -1,13 +1,13 @@
 <h3>Configuration</h3>
 <dl>
- <dt>Crate ID: {config.crate_id}</dt>
+ <dt>Crate ID: <a href="{baseURL}/crate?key={config.crate_id}">{config.crate_id}</a></dt>
  <dt>Slot: {config.slot}</dt>
- <dt>FEC ID: {config.fec_id}</dt>
+ <dt>FEC ID: <a href="{baseURL}/fec?key=&#34;{config.fec_id}&#34;">{config.fec_id}</a></dt>
  <dt>Daughterboards</dt>
   <dd>
    <ul>
     {#config.db}
-     <li>{db_id}{~n} (Slot {db_slot})
+     <li><a href="{baseURL}/db/{db_id}">{db_id}</a> (Slot {db_slot})</li>
     {/config.db}
    </ul>
   </dd>

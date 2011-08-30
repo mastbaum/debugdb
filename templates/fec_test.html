@@ -1,45 +1,52 @@
 {>"config_header.html"/}
 
-<h3>Results</h3>
+<h3 style="padding-bottom:5px">
+ Results:&nbsp;
+ {#pass}
+  <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Test Passed</span>
+ {:else}
+  <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Test Failed</span>
+ {/pass}
+</h3>
 <table border=0>
  <tr>
   <td>Pedestal</td> 
   {#pedestal}
-   <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
-   <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   <td><span title="Failed" style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/pedestal}
  </tr>
  <tr>
   <td>Chip Disable</td> 
   {#chip_disable}
-   <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
-   <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   <td><span title="Failed" style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/chip_disable}
  </tr>
  <tr>
   <td>LGI Select</td> 
   {#lgi_select}
-   <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
-   <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   <td><span title="Failed" style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/lgi_select}
  </tr>
  <tr>
   <td>CMOS PROG low</td> 
   {#cmos_prog_low}
-   <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
-   <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   <td><span title="Failed" style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/cmos_prog_low}
  </tr>
  <tr>
   <td>CMOS PROG high</td> 
   {#cmos_prog_high}
-   <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
-   <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   <td><span title="Failed" style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/cmos_prog_high}
  </tr>
  <tr>
@@ -48,9 +55,9 @@
    <ol class="custom">
    {#cmos_test_reg}
     {?.}
-     <li><span style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
+     <li><span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
     {:else}
-     <li><span style="display:inline-block;width:12px;background:red">&nbsp;</span></li>
+     <li><span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span></li>
     {/.}
    {/cmos_test_reg}
    </ol>

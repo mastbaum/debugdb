@@ -1,0 +1,23 @@
+{?rows}
+<h1>All tests on {system_name} {system_id}</h1>
+ <table>
+  <tr>
+   <th>Type</th>
+   <th>Status</th>
+   <th>Date</th>
+  </tr>
+ {#rows}
+  <tr>
+   <td><a href="{baseURL}/{value.type}/{id}">{value.type}</a></td>
+   {#value.pass}
+    <td align="center"><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   {:else}
+    <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   {/value.pass}
+   <td>{value.date}</td>
+ {/rows}
+ </table>
+{:else}
+ <h1>No tests found</h1>
+{/rows}
+
