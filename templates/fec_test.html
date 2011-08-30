@@ -35,12 +35,26 @@
   {/cmos_prog_low}
  </tr>
  <tr>
-  <td>CMOS PRIG high</td> 
+  <td>CMOS PROG high</td> 
   {#cmos_prog_high}
    <td><span style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
    <td><span style="display:block;background:red;width:12px">&nbsp;</span></td>
   {/cmos_prog_high}
+ </tr>
+ <tr>
+  <td>CMOS Test Registers</td>
+  <td>
+   <ol class="custom">
+   {#cmos_test_reg}
+    {?.}
+     <li><span style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
+    {:else}
+     <li><span style="display:inline-block;width:12px;background:red">&nbsp;</span></li>
+    {/.}
+   {/cmos_test_reg}
+   </ol>
+  </td>
  </tr>
 </table>
 

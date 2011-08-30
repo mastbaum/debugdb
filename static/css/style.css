@@ -1,3 +1,32 @@
+.button{
+	display:table-cell;
+	vertical-align:middle;
+	width:200px;
+	height:60px;
+	color:#FFFFFF;
+	background-color:#006699;
+	border:#003366 1px solid;
+	cursor:pointer;
+}
+
+ol.custom {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ol.custom > li:before {
+  content: counter(customlistcounter) " ";
+  counter-increment: customlistcounter;
+  font-weight: normal;
+  float: left;
+  width: 3em;
+  text-align: right;
+}
+
+ol.custom:first-child {
+  counter-reset: customlistcounter;
+}
+
 /*
     DJANGO Admin styles
 */
@@ -34,7 +63,7 @@ a.section:link, a.section:visited {
 /* GLOBAL DEFAULTS */
 
 p, ol, ul, dl {
-    margin: .2em 0 .8em 0;
+    margin: 0.2em 0 0.8em 0;
 }
 
 p {
