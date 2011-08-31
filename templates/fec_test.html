@@ -21,7 +21,7 @@
 </h3>
 <table border=0>
  <tr>
-  <td>Pedestal</td> 
+  <th>Pedestal</th>
   {#pedestal}
    <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
@@ -29,7 +29,7 @@
   {/pedestal}
  </tr>
  <tr>
-  <td>Chip Disable</td> 
+  <th>Chip Disable</th>
   {#chip_disable}
    <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
@@ -37,7 +37,7 @@
   {/chip_disable}
  </tr>
  <tr>
-  <td>LGI Select</td> 
+  <th>LGI Select</th>
   {#lgi_select}
    <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
@@ -45,7 +45,7 @@
   {/lgi_select}
  </tr>
  <tr>
-  <td>CMOS PROG low</td> 
+  <th>CMOS PROG low</th>
   {#cmos_prog_low}
    <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
@@ -53,7 +53,7 @@
   {/cmos_prog_low}
  </tr>
  <tr>
-  <td>CMOS PROG high</td> 
+  <th>CMOS PROG high</th>
   {#cmos_prog_high}
    <td><span title="Passed" style="display:block;background:green;width:12px">&nbsp;</span></td>
   {:else}
@@ -61,9 +61,9 @@
   {/cmos_prog_high}
  </tr>
  <tr>
-  <td>CMOS Test Registers</td>
+  <th>CMOS Test Registers</th>
   <td>
-   <ol class="custom">
+   <ol class="custom" style="margin-left:-73px">
    {#cmos_test_reg}
     {?.}
      <li><span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
