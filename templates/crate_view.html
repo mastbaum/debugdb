@@ -28,13 +28,14 @@
   </div>
   {#slots}
    <div style="display:table-cell;vertical-align:middle;width:5%;height:100%">
-    <div id=crate_{crate_id}_{slot_id} style="height:100%;display:none;">
+    <div id=crate_{crate_id}_{slot} style="height:100%;display:none;">
     {?row.value}
      {#row.value.pass}
       <span style="display:block;background:#90ee90;border:solid 1px black">
      {:else}
       <span style="display:block;background:pink;border:solid 1px black">
      {/row.value.pass}
+     <span style="font-size:larger;font-weight:bold;text-decoration:underline"><a href="{baseURL}/fec_test/{row.id}">{row.value.type}</a></span>
      <dl>
      <dt>{row.value.short_created}</dt>
      <dt>FEC <a href="{baseURL}/fec?key=&#34;{row.value.config.fec_id}&#34;">{row.value.config.fec_id}</a></dt>
