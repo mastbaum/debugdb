@@ -37,9 +37,10 @@ Most recent tests for each slot of each crate:
      {:else}
       <span style="display:block;background:pink;border:solid 1px black">
      {/row.value.pass}
-     <span style="font-size:larger;font-weight:bold;text-decoration:underline"><a href="{baseURL}/fec_test/{row.id}">{row.value.type}</a></span>
+     <span style="font-size:larger;font-weight:bold;text-decoration:underline"><a href="{baseURL}/{row.value.type}/{row.id}">{row.value.type}</a></span>
      <dl>
      <dt>{row.value.short_created}</dt>
+     <dt>{row.value.config.loc}</dt>
      <dt>FEC <a href="{baseURL}/fec?key=&#34;{row.value.config.fec_id}&#34;">{row.value.config.fec_id}</a></dt>
      <dt>DBs</dt>
      <dd>

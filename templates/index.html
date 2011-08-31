@@ -18,6 +18,7 @@
   <tr>
    <th>Type</th>
    <th>Status</th>
+   <th style="text-align:center">Location</th>
    <th>Date</th>
   </tr>
  {#rows}
@@ -28,6 +29,7 @@
    {:else}
     <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
    {/value.pass}
+   <td>{value.loc}</td>
    <td>{value.short_created}</td>
  {/rows}
  </table>

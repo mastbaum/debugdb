@@ -31,15 +31,52 @@
          }
      }
  }
+ function setCookie(elementId) {
+     var c_name = elementId;
+     var exdays = 100;
+     var exdate = new Date();
+     exdate.setDate(exdate.getDate() + exdays);
+     var value = document.getElementById(elementId).checked;
+     var c_value = escape(value) + ((exdays == null) ? "" : "; expires = " + exdate.toUTCString());
+     document.cookie = c_name + "=" + c_value;
+ }
+ function setCheckboxes() {
+     var i,x,y,ARRcookies = document.cookie.split(";");
+     for (i=0; i<ARRcookies.length; i++) {
+         x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+         y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+         if (y == "true")
+             y = true;
+         else
+             y = false;
+         x = x.replace(/^\s+|\s+$/g,"");
+         if (x == 'penn')
+             document.getElementById('penn').checked = y;
+         if (x == 'underground')
+             document.getElementById('underground').checked = y;
+         if (x == 'surface')
+             document.getElementById('surface').checked = y;
+     }
+ }
  </script>
 </head>
-<body class="dashboard">
- <div id="header">
+<body class="dashboard" style="width:100%" onLoad="setCheckboxes()">
+ <div style="display:table;width:100%">
+ <div id="header" style="display:table-row;width:100%">
+  <div id="branding" style="display:table-cell;width:40%;align:left">
   <a href="{baseURL}">
-  <div id="branding">
    <h1 id="site-name">SNO+ Electronics Debugging</h1>
-  </div>
   </a>
+  </div>
+  <div style="display:table-cell;vertical-align:middle;text-align:right;font-size:smaller;width:60%;padding-right:20px">
+   <form>
+   <span style="font-weight:bold">Locations:&nbsp;</span>
+    <input type="checkbox" id=underground name="underground" onClick="setCookie('underground');window.location.reload()"/>Underground&nbsp;
+    <input type="checkbox" id=penn name="penn" onClick="setCookie('penn');window.location.reload()"/>Penn&nbsp;
+    <input type="checkbox" id=surface name="surface" onClick="setCookie('surface');window.location.reload()"/>Surface&nbsp;
+   </form>
+  </div>
+ </div>
  </div>
 
  <div id="content" class="colMS" style="width:90%;">
