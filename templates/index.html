@@ -1,11 +1,15 @@
 {#ee}
 <body class="dashboard" style="background-image:url({baseURL}/static/images/summer.jpg);background-size:100%;">
 {/ee}
-Welcome.
-<br/><br/><hr/><br/>
+<div style="display:table;width:80%">
+<div style="display:table-row">
+<div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
+<h1 style="margin-top:40px"><a href="{baseURL}/crateview" style="text-decoration:underline">CrateView&trade;</a></h1>
+</div>
+<div style="width:50%;display:table-cell;text-align:center;border:dashed 1px #ccc;vertical-align:middle">
 {?rows}
-<h1>All tests</h1>
- <table>
+<h1 style="margin-bottom:10px;margin-top:10px">All tests</h1>
+ <table align=center>
   <tr>
    <th>Type</th>
    <th>Status</th>
@@ -19,10 +23,22 @@ Welcome.
    {:else}
     <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
    {/value.pass}
-   <td>{value.date}</td>
+   <td>{value.created}</td>
  {/rows}
  </table>
 {:else}
  <h1>No tests found</h1>
 {/rows}
+</div>
+<div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
+<h1 style="margin-bottom:15px">Documentation</h1>
+<ul style="text-align:left">
+<li><a href="http://nubar.hep.upenn.edu/snoplus/DAQ/">SNO+ DAQ Website</a></li>
+<li><a href="{baseURL}/static/docs/xl3_user_guide.pdf">XL3 User's Guide [PDF]</a></li>
+<li><a href="{baseURL}/static/docs/xilinx_commands.txt">Xilinx Command Reference [txt]</a></li>
+<li><a href="{baseURL}/static/docs/turn_on_procedure.txt">XL3 Turn-on Procedure [txt]</a></li>
+</ul>
+</div>
+</div>
+</div>
 

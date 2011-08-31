@@ -1,0 +1,14 @@
+go to CRUG1.
+cd to DetectorControl
+run "perl DetectorControl.pl"
+check all statuses, should be zero
+turn on iboot
+turn on timing rack
+flip switch on latch box (across from snopenn01)
+flip switches for crates in switch box in control room
+enable crates on CRUG1, check status
+push latch button (black) for timing rack on latch box
+turn on timing rack with switch on rack
+push latch button (black) for any racks you want
+turn on racks with switch in back
+have fun!

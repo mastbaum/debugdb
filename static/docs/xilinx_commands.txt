@@ -1,0 +1,2 @@
+x101sp3
+xmd -xmp system.xmp -opt etc/xmd_ppc405_0.opt
