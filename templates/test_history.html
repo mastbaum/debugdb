@@ -1,0 +1,32 @@
+{?rows}
+<h1>Test History</h1>
+ <table>
+  <tr>
+   <th>Type</th>
+   <th>Status</th>
+   <th>Configuration</th>
+  </tr>
+ {#rows}
+  <tr>
+   <td><a href="{baseURL}/{value.type}/{id}">{value.type}</a></td>
+   {#value.pass}
+    <td align="center"><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+   {:else}
+    <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+   {/value.pass}
+   <td>
+    <dl>
+    <dt>{value.short_created}</dt>
+    <dt>FEC <a href="{baseURL}/fec?key=&#34;{value.config.fec_id}&#34;">{value.config.fec_id}</a></dt>
+    <dt>DBs</dt>
+    {#value.config.db}
+     <a href="{baseURL}/db?key=&#34;{db_id}&#34;">{db_id}</a><br/>
+    {/value.config.db}
+    </dl>
+   </td>
+ {/rows}
+ </table>
+{:else}
+ <h1>No tests found</h1>
+{/rows}
+
