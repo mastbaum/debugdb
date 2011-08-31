@@ -7,11 +7,11 @@
   </tr>
  {#rows}
   <tr>
-   {#istest}
-     <td><a href="{baseURL}/{type}?key=&#34;{id}&#34;">test {id}</a></td>
+   {?noquotes}
+     <td><a href="{baseURL}/{type}?key={id}">{id}</a></td>
    {:else}
      <td><a href="{baseURL}/{type}?key=&#34;{id}&#34;">{id}</a></td>
-   {/istest}
+   {/noquotes}
    <td style="text-align:center">{count}</td>
  {/rows}
  </table>
