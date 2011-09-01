@@ -1,0 +1,64 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+ <div style="display:table-row">
+  <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+   {#pass}
+    <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+   {:else}
+    <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+   {/pass}
+  </div>
+  <div style="display:table-cell">
+   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">Voltage Monitoring Test</a></h1>
+   <h3 style="color:black;margin-top:-6px">{created}</h3>
+  </div>
+ </div>
+</div>
+
+{>"config_header.html"/}
+
+<h3 style="padding-bottom:5px">
+ Results:&nbsp;
+</h3>
+{#stuff}
+{.}<br/>
+{/stuff}
+<table border=0>
+ <tr>
+  <th>Temperature</th>
+  <td>{temp}</td>
+ </tr>
+ <tr>
+  <th>CALD</th>
+  <td>{cald}</td>
+ </tr>
+ <tr>
+  <th>HVT</th>
+  <td>{hvt}</td>
+ </tr>
+</table>
+
+<h4>Voltages</h4>
+<div style="display:table;width:20%;">
+ {#voltages}
+ <div style="display:table-row">
+  <div style="display:table-cell;text-align:right;font-weight:bold">
+   {name}
+  </div>
+  <div style="display:table-cell;text-align:center;padding-bottom:2px">
+  {?ok}
+   <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+  {:else}
+   <span title="Failed (nominally {nominal} V)" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+  {/ok}
+  </div>
+  <div style="display:table-cell">
+   {value}
+  </div>
+ </div>
+ {/voltages}
+</div>
+
+<br/>
+<hr size=1 color="black"/>
+<span style="font-size:7pt">Document ID: {_id}</span>
+
