@@ -8,7 +8,7 @@
    {/pass}
   </div>
   <div style="display:table-cell">
-   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">CMOS M GTVALID Test</a></h1>
+   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">Crate CBAL Test</a></h1>
    <h3 style="color:black;margin-top:-6px">{created}</h3>
   </div>
  </div>
@@ -19,43 +19,12 @@
 <h3 style="padding-bottom:5px">
  Results:&nbsp;
 </h3>
-<table border=0>
- <tr>
-  <th>TAC ref</th>
-  <td>{tacref}</td>
- </tr>
- <tr>
-  <th>Vmax</th>
-  <td>{vmax}</td>
- </tr>
- <tr>
-  <th>ISETA</th>
-  <td>
-   <ol start=0 style="margin-left:-20px;padding-left:-20px">
-    {#iseta}
-    <li>{.}</li>
-    {/iseta}
-   </ol>
-  </td>
- </tr>
- <tr>
-  <th>ISETM</th>
-  <td>
-   <ol start=0 style="margin-left:-20px;padding-left:-20px">
-    {#isetm}
-    <li>{.}</li>
-    {/isetm}
-   </ol>
-  </td>
- </tr>
-</table>
-<br/>
-
 <div style="display:table;width:20%;">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">&nbsp;</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">Errors</div>
-  <div style="display:table-cell;font-weight:bold">TAC shift</div>
+  <div style="display:table-cell;font-weight:bold">Vbal low</div>
+  <div style="display:table-cell;font-weight:bold">Vbal high</div>
  </div>
   {#channels}
   <div style="display:table-row">
@@ -64,13 +33,16 @@
    </div>
    <div style="display:table-cell;text-align:center;padding-bottom:2px">
    {?errors}
-    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+    <span title="{errors}" style="display:inline-block;width:12px;background:red">&nbsp;</span>
    {:else}
     <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
    {/errors}
    </div>
    <div style="display:table-cell">
-    {tac_shift}
+    {vbal_low}
+   </div>
+   <div style="display:table-cell">
+    {vbal_high}
    </div>
   </div>
   {/channels}
