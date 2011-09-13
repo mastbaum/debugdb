@@ -1,0 +1,59 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+ <div style="display:table-row">
+  <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+   {#pass}
+    <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+   {:else}
+    <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+   {/pass}
+  </div>
+  <div style="display:table-cell">
+   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">ZDISC Test</a></h1>
+   <h3 style="color:black;margin-top:-6px">{created}</h3>
+  </div>
+ </div>
+</div>
+
+{>"config_header.html"/}
+
+<h3 style="padding-bottom:5px">
+ Results:
+</h3>
+
+<table style="text-align:center">
+ <tr>
+  <th>Channel</th>
+  <th>Maximum rate</th>
+  <th>Lower rate</th>
+  <th>Upper rate</th>
+  <th>Maximum DAC</th>
+  <th>Lower DAC</th>
+  <th>Upper DAC</th>
+  <th>Zero DAC Setting</th>
+  <th>Errors</th>
+ </tr>
+ {#rows}
+  <tr>
+   <td>{channel}</td>
+   <td>{max_rate}</td>
+   <td>{lower_rate}</td>
+   <td>{upper_rate}</td>
+   <td>{max_dac}</td>
+   <td>{lower_dac}</td>
+   <td>{upper_dac}</td>
+   <td>{zero_dac}</td>
+   <td align="center">
+    {?errors}
+     <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+    {:else}
+     <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+    {/errors}
+   </td>
+  </tr>
+ {/rows}
+</table>
+
+<br/>
+<hr size=1 color="black"/>
+<span style="font-size:7pt">Document ID: {_id}</span>
+
