@@ -1,0 +1,102 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+ <div style="display:table-row">
+  <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+   {#pass}
+    <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+   {:else}
+    <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+   {/pass}
+  </div>
+  <div style="display:table-cell">
+   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">Final Test</a></h1>
+   <h3 style="color:black;margin-top:-6px">{created}</h3>
+  </div>
+ </div>
+</div>
+
+{>"config_header.html"/}
+
+<div style="display:table">
+<div style="display:table-row;width:80%">
+<div style="display:table-cell;width:60%">
+<h3>Notes <input type="submit" value="Save"></h3>
+<h4>Front End Card</h4>
+{#fec}
+ <table>
+  <tr>
+   <td>Comments</td>
+   <td><textarea disabled rows=8 cols=40>{comments}</textarea></td>
+  </tr>
+  <tr>
+   <td>Cleaned</td>
+   <td><input disabled type="checkbox" name="cleaned" {?cleaned}checked{/cleaned}/></td>
+  </tr>
+  <tr>
+   <td>Refurbished</td>
+   <td><input disabled type="checkbox" name="reurbished" {?refurbished}checked{/refurbished}/></td>
+  </tr>
+  <tr>
+   <td>NHIT100 DC Offset</td>
+   <td><input disabled type="text" name="dc_offset_n100" value="{dc_offset_n100}"/></td>
+  </tr>
+  <tr>
+   <td>NHIT20 DC Offset</td>
+   <td><input disabled type="text" name="dc_offset_n20" value="{dc_offset_n20}"/></td>
+  </tr>
+  <tr>
+   <td>ESUMHI DC Offset</td>
+   <td><input disabled type="text" name="dc_offset_esumhi" value="{dc_offset_esumhi}"/></td>
+  </tr>
+  <tr>
+   <td>ESUMLO DC Offset</td>
+   <td><input disabled type="text" name="dc_offset_esumlo" value="{dc_offset_esumlo}"/></td>
+  </tr>
+ </table>
+{/fec}
+
+<h4>Daughterboards</h4>
+{#db}
+ <table>
+  {#.}
+  <tr>
+   <td><strong>DB {id}</strong></td>
+   <td>
+   <td rowspan=2><textarea disabled rows=4 cols=40>{comments}</textarea></td>
+  </tr>
+  <tr>
+   <td><input disabled type="checkbox" name="dark_matter" {?dark_matter}checked{/dark_matter}/>Dark Matter</td>
+  </tr>
+  {/.}
+ </table>
+{/db}
+</div>
+
+<div style="display:table-cell">
+<h3>Tests</h3>
+{?tests}
+<table>
+ {#tests}
+ <tr>
+  <td>
+  {?pass}
+   <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+  {:else}
+   <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+  {/pass}
+  </td>
+  <td><a href="{baseURL}/{type}/{id}">{type}</a></td>
+  <td>{created}</td>
+ </tr>
+ {/tests}
+</table>
+{:else}
+<strong>No tests</strong>
+{/tests}
+</div>
+</div>
+</div>
+
+<br/>
+<hr size=1 color="black"/>
+<span style="font-size:7pt">Document ID: {_id}</span>
+
