@@ -1,0 +1,124 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+ <div style="display:table-row">
+  <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+   {#pass}
+    <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+   {:else}
+    <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+   {/pass}
+  </div>
+  <div style="display:table-cell">
+   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">Charge Injection Scan</a></h1>
+   <h3 style="color:black;margin-top:-6px">{created}</h3>
+  </div>
+ </div>
+</div>
+
+{>"config_header.html"/}
+
+<h3 style="padding-bottom:5px">
+ Summary:
+</h3>
+<strong>The first channel of each type is plotted against the index.</strong>
+
+<h4>QHL</h4>
+<div id="qhl" style="width:600px;height:300px;"></div>
+
+<h4>QHS</h4>
+<div id="qhs" style="width:600px;height:300px;"></div>
+
+<h4>QLX</h4>
+<div id="qlx" style="width:600px;height:300px;"></div>
+
+<h4>TAC</h4>
+<div id="tac" style="width:600px;height:300px;"></div>
+
+<h3 style="padding-bottom:5px">
+ Results:
+</h3>
+
+{#tables}
+ <table>
+  <tr>
+   <th>Channel</th>
+   <th>Val</th>
+   <th>QHL even</th>
+   <th>QHL odd</th>
+   <th>QHS even</th>
+   <th>QHS odd</th>
+   <th>QLX even</th>
+   <th>QLX odd</th>
+   <th>TAC even</th>
+   <th>TAC odd</th>
+   <th>Errors (even)</th>
+   <th>Errors (odd)</th>
+  </tr>
+  {#.}
+   <tr>
+    <td>{channel}</td>
+    <td>{val}</td>
+    <td>{qhl_even}</td>
+    <td>{qhl_odd}</td>
+    <td>{qhs_even}</td>
+    <td>{qhs_odd}</td>
+    <td>{qlx_even}</td>
+    <td>{qlx_odd}</td>
+    <td>{tac_even}</td>
+    <td>{tac_odd}</td>
+    <td align="center">
+     {?errors_even}
+      <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+     {:else}
+      <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+     {/errors_even}
+    </td>
+    <td align="center">
+     {?errors_odd}
+      <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+     {:else}
+      <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+     {/errors_odd}
+    </td>
+   </tr>
+  {/.}
+ </table>
+ <br/>
+{/tables}
+
+<script type="text/javascript">
+$(function () {
+    var qhl_even = [{#qhl_even_plot} [{id},{value}], {/qhl_even_plot}];
+    var qhl_odd =  [{#qhl_odd_plot}  [{id},{value}], {/qhl_odd_plot} ];
+    var qhs_even = [{#qhs_even_plot} [{id},{value}], {/qhs_even_plot}];
+    var qhs_odd =  [{#qhs_odd_plot}  [{id},{value}], {/qhs_odd_plot} ];
+    var qlx_even = [{#qlx_even_plot} [{id},{value}], {/qlx_even_plot}];
+    var qlx_odd =  [{#qlx_odd_plot}  [{id},{value}], {/qlx_odd_plot} ];
+    var tac_even = [{#tac_even_plot} [{id},{value}], {/tac_even_plot}];
+    var tac_odd =  [{#tac_odd_plot}  [{id},{value}], {/tac_odd_plot} ];
+
+    $.plot($("#qhl"), [
+        { label: "QHL even",  data: qhl_even},
+        { label: "QHL odd",  data: qhl_odd},
+    ]);
+
+    $.plot($("#qhs"), [
+        { label: "QHS even",  data: qhs_even},
+        { label: "QHS odd",  data: qhs_odd},
+    ]);
+
+    $.plot($("#qlx"), [
+        { label: "QLX even",  data: qlx_even},
+        { label: "QLX odd",  data: qlx_odd},
+    ]);
+
+    $.plot($("#tac"), [
+        { label: "TAC even",  data: tac_even},
+        { label: "TAC odd",  data: tac_odd},
+    ]);
+});
+</script>
+
+<br/>
+<hr size=1 color="black"/>
+<span style="font-size:7pt">Document ID: {_id}</span>
+
