@@ -5,7 +5,7 @@ Schemas for DebugDB Documents
 * All documents require a boolean key 'pass'
 * All documents require a unique string key '_id'; a user-generated UUID is recommended.
 * All documents require a string datetime key 'created' (e.g. 'Tue Jul 12 12:34:11 2011')
-* All documents require a key 'config' with the following value:
+* All documents require a key 'config', the value of which is a dictionary with the follwing keys:
   * db: array of dictionaries with keys 'db_id' (string) and 'slot' (integer)
   * fec_id: string
   * crate_id: integer
