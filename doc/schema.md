@@ -12,6 +12,33 @@ Schemas for DebugDB Documents
   * slot: integer
   * loc: string ("penn" | "underground" | "surface")
 
+Example config:
+
+    {
+        "db": [
+            {
+                "db_id": "d071",
+                "slot": 0
+            },
+            {
+                "db_id": "d0c3",
+                "slot": 1
+            },
+            {
+                "db_id": "d2d8",
+                "slot": 2
+            },
+            {
+                "db_id": "d214",
+                "slot": 3
+            }
+        ],
+        "fec_id": "f09f",
+        "crate_id": 12,
+        "slot": 13,
+        "loc": "penn"
+    }
+
 cald_test
 ---------
 * type: 'cald_test'
