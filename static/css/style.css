@@ -394,29 +394,31 @@ input[type=text], input[type=password], textarea, select, .vTextField {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input {
-    background: white url(../img/admin/nav-bg.gif) bottom repeat-x;
+    background: #417690;
+    color: #ffc;
     padding: 3px 5px;
-    color: black;
     border: 1px solid #bbb;
     border-color: #ddd #aaa #aaa #ddd;
 }
 
 .button:active, input[type=submit]:active, input[type=button]:active {
-    background-image: url(../img/admin/nav-bg-reverse.gif);
+    background: #417690;
+    color: #ffc;
     background-position: top;
 }
 
 .button[disabled], input[type=submit][disabled], input[type=button][disabled] {
-    background-image: url(../img/admin/nav-bg.gif);
+    background: #417690;
+    color: #ffc;
     background-position: bottom;
     opacity: 0.4;
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
     border: 2px solid #5b80b2;
-    background: #7CA0C7 url(../img/admin/default-bg.gif) bottom repeat-x;
     font-weight: bold;
-    color: white;
+    background: #417690;
+    color: #ffc;
     float: right;
 }
 

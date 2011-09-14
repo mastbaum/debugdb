@@ -19,57 +19,78 @@
 <div style="display:table">
 <div style="display:table-row;width:80%">
 <div style="display:table-cell;width:60%">
-<h3>Notes <input type="submit" value="Save"></h3>
+<form action="" method=POST>
+<input type="hidden" name="final_test_id" value="{_id}">
+<h3>Notes&nbsp;&nbsp;&nbsp;<input type="submit" value="Save"></h3>
 <h4>Front End Card</h4>
-{#fec}
- <table>
-  <tr>
-   <td>Comments</td>
-   <td><textarea disabled rows=8 cols=40>{comments}</textarea></td>
-  </tr>
-  <tr>
-   <td>Cleaned</td>
-   <td><input disabled type="checkbox" name="cleaned" {?cleaned}checked{/cleaned}/></td>
-  </tr>
-  <tr>
-   <td>Refurbished</td>
-   <td><input disabled type="checkbox" name="reurbished" {?refurbished}checked{/refurbished}/></td>
-  </tr>
-  <tr>
-   <td>NHIT100 DC Offset</td>
-   <td><input disabled type="text" name="dc_offset_n100" value="{dc_offset_n100}"/></td>
-  </tr>
-  <tr>
-   <td>NHIT20 DC Offset</td>
-   <td><input disabled type="text" name="dc_offset_n20" value="{dc_offset_n20}"/></td>
-  </tr>
-  <tr>
-   <td>ESUMHI DC Offset</td>
-   <td><input disabled type="text" name="dc_offset_esumhi" value="{dc_offset_esumhi}"/></td>
-  </tr>
-  <tr>
-   <td>ESUMLO DC Offset</td>
-   <td><input disabled type="text" name="dc_offset_esumlo" value="{dc_offset_esumlo}"/></td>
-  </tr>
- </table>
-{/fec}
+<table>
+ <tr>
+  <td>Comments</td>
+  <td><textarea name="fec_comments" rows=8 cols=40>{fec_comments}</textarea></td>
+ </tr>
+ <tr>
+  <td>Cleaned</td>
+  <td><input type="checkbox" name="cleaned" value="__checkbox_true" {?cleaned}checked{/cleaned}/></td>
+ </tr>
+ <tr>
+  <td>Refurbished</td>
+  <td><input type="checkbox" name="refurbished" value="__checkbox_true" {?refurbished}checked{/refurbished}/></td>
+ </tr>
+ <tr>
+  <td>NHIT100 DC Offset</td>
+  <td><input type="text" name="dc_offset_n100" value="{dc_offset_n100}"/></td>
+ </tr>
+ <tr>
+  <td>NHIT20 DC Offset</td>
+  <td><input type="text" name="dc_offset_n20" value="{dc_offset_n20}"/></td>
+ </tr>
+ <tr>
+  <td>ESUMHI DC Offset</td>
+  <td><input type="text" name="dc_offset_esumhi" value="{dc_offset_esumhi}"/></td>
+ </tr>
+ <tr>
+  <td>ESUMLO DC Offset</td>
+  <td><input type="text" name="dc_offset_esumlo" value="{dc_offset_esumlo}"/></td>
+ </tr>
+</table>
 
 <h4>Daughterboards</h4>
-{#db}
  <table>
-  {#.}
   <tr>
-   <td><strong>DB {id}</strong></td>
+   <td><strong>DB 0</strong></td>
    <td>
-   <td rowspan=2><textarea disabled rows=4 cols=40>{comments}</textarea></td>
+   <td rowspan=2><textarea name="db0_comments" rows=4 cols=40>{db0_comments}</textarea></td>
   </tr>
   <tr>
-   <td><input disabled type="checkbox" name="dark_matter" {?dark_matter}checked{/dark_matter}/>Dark Matter</td>
+   <td><input type="checkbox" name="db0_dark_matter" value="__checkbox_true" {?db0_dark_matter}checked{/db0_dark_matter}/>Dark Matter</td>
   </tr>
-  {/.}
+  <tr>
+   <td><strong>DB 1</strong></td>
+   <td>
+   <td rowspan=2><textarea name="db1_comments" rows=4 cols=40>{db1_comments}</textarea></td>
+  </tr>
+  <tr>
+   <td><input type="checkbox" name="db1_dark_matter" value="__checkbox_true" {?db1_dark_matter}checked{/db1_dark_matter}/>Dark Matter</td>
+  </tr>
+  <tr>
+   <td><strong>DB 2</strong></td>
+   <td>
+   <td rowspan=2><textarea name="db2_comments" rows=4 cols=40>{db2_comments}</textarea></td>
+  </tr>
+  <tr>
+   <td><input type="checkbox" name="db2_dark_matter" value="__checkbox_true" {?db2_dark_matter}checked{/db2_dark_matter}/>Dark Matter</td>
+  </tr>
+  <tr>
+   <td><strong>DB 3</strong></td>
+   <td>
+   <td rowspan=2><textarea name="db3_comments" rows=4 cols=40>{db3_comments}</textarea></td>
+  </tr>
+  <tr>
+   <td><input type="checkbox" name="db3_dark_matter" value="__checkbox_true" {?db3_dark_matter}checked{/db3_dark_matter}/>Dark Matter</td>
+  </tr>
  </table>
-{/db}
 </div>
+</form>
 
 <div style="display:table-cell">
 <h3>Tests</h3>
