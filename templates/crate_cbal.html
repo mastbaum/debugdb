@@ -19,12 +19,13 @@
 <h3 style="padding-bottom:5px">
  Results:&nbsp;
 </h3>
-<div style="display:table;width:20%;">
+<div style="display:table;width:30%;">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">&nbsp;</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">Errors</div>
   <div style="display:table-cell;font-weight:bold">Vbal low</div>
   <div style="display:table-cell;font-weight:bold">Vbal high</div>
+  <div style="display:table-cell;font-weight:bold">Error flags</div>
  </div>
   {#channels}
   <div style="display:table-row">
@@ -43,6 +44,9 @@
    </div>
    <div style="display:table-cell">
     {vbal_high}
+   </div>
+   <div style="display:table-cell">
+    {error_flags}
    </div>
   </div>
   {/channels}
