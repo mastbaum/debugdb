@@ -142,6 +142,8 @@ mem_test
 ped_run
 -------
 * type: 'ped_run'
+* balanced: boolean
+* error_flags: integer array (length 32, only values 0, 1, 2 valid)
 * errors: boolean array (length 32)
 * num: (length 32) array of (length 16) integer arrays
 * qhl: (length 32) array of (length 16) number arrays

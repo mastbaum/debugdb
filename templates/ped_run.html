@@ -20,6 +20,21 @@
  Summary:
 </h3>
 
+<table>
+ <tr>
+  <th>Balanced</th>
+  <td>
+   {?balanced}
+    <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+   {:else}
+    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+   {/balanced}
+   </ol>
+  </td>
+ </tr>
+</table>
+<br/>
+
 <div style="display:table;width:6%;">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">&nbsp;</div>
@@ -32,9 +47,9 @@
    </div>
    <div style="display:table-cell;text-align:center;padding-bottom:2px">
    {?errors}
-    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+    <span title="{hint}" style="display:inline-block;width:12px;background:red;color:white;vertical-align:middle;font-weight:bold">{flag}</span>
    {:else}
-    <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+    <span title="{hint}" style="display:inline-block;width:12px;background:green">&nbsp;</span>
    {/errors}
    </div>
   </div>
