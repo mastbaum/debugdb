@@ -153,6 +153,12 @@ ped_run
 * tac: (length 32) array of (length 16) number arrays
 * tac_rms: (length 32) array of (length 16) number arrays
 
+set_ttot
+--------
+* type: 'set_ttot'
+* target_time: number
+* chips: array of dictionaries with keys 'id' (integer), 'times' (number integer), 'errors' (boolean), 'rmp': number, 'vsi': number
+
 vmon
 ----
 * type: 'vmon'
