@@ -75,7 +75,7 @@ cmos_m_gtvalid
 * isetm: number array (length 2)
 * tacref: number
 * vmax: number
-* channels: array of dictionaries with keys 'id' (integer), 'tac_shift' (integer), 'errors' (boolean)
+* channels: array of dictionaries with keys 'id' (integer), 'tac_shift' (integer), 'errors' (boolean), 'gtvalid0' (number), 'gtvalid1' (number)
 
 crate_cbal
 ----------
