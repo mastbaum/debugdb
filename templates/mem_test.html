@@ -19,23 +19,51 @@
 <h3 style="padding-bottom:5px">
  Results:&nbsp;
 </h3>
+
+<div style="display:table;width:60%">
+<div style="display:table-row">
+<div style="display:table-cell">
+<h4>Address Test</h4>
+<ol>
+ {#address_test}
+  {?.}
+   <li style="padding:1px"><span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span></li>
+  {:else}
+   <li style="padding:1px"><span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
+  {/.}
+ {/address_test}
+</ol>
+</div>
+<div style="display:table-cell">
+<h4>Pattern Test</h4>
+{#pattern_test}
 <table border=0>
  <tr>
-  <th>Address test</th>
-  <td>{address_test}</td>
+  <th>Errors</th>
+  {?error}
+  <td><span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span></td>
  </tr>
  <tr>
-  <th>Pattern test(s)</th>
-   <td>
-    <ol>
-     {#pattern_test}
-      <li>{.}</li>
-     {/pattern_test}
-    </ol>
-   </td>
+  <th>Error Location</th>
+  <td>{error_location}</td>
  </tr>
+ <tr>
+  <th>Expected Data</th>
+  <td>{expected_data}</td>
+ </tr>
+ <tr>
+  <th>Read Data</th>
+  <td>{read_data}</td>
+ </tr>
+ {:else}
+  <td><span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span></td>
+  </tr>
+ {/error}
 </table>
-<br/>
+{/pattern_test}
+</div>
+</div>
+</div>
 
 <hr size=1 color="black"/>
 <span style="font-size:7pt">Document ID: {_id}</span>
