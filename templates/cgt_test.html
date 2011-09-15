@@ -33,26 +33,16 @@
 </table>
 <br/>
 
-<div style="display:table;width:6%;">
- <div style="display:table-row">
-  <div style="display:table-cell;font-weight:bold">&nbsp;</div>
-  <div style="display:table-cell;text-align:center;font-weight:bold">Errors</div>
- </div>
-  {#channels}
-  <div style="display:table-row">
-   <div style="display:table-cell;text-align:right;font-weight:bold">
-    {id}
-   </div>
-   <div style="display:table-cell;text-align:center;padding-bottom:2px">
-   {?errors}
-    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
-   {:else}
-    <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
-   {/errors}
-   </div>
-  </div>
-  {/channels}
-</div>
+<h4>Errors</h4>
+<ol>
+ {#errors}
+  {?.}
+   <li style="padding:1px"><span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span></li>
+  {:else}
+   <li style="padding:1px"><span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span></li>
+  {/.}
+ {/errors}
+</ol>
 
 <h3 style="padding-bottom:5px">
  Output:&nbsp;

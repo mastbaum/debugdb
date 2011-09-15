@@ -53,7 +53,7 @@ cgt_test
 * type: 'cgt_test'
 * printout: string
 * missing_bundles: boolean
-* channels: array of dictionaries with keys 'id' (integer), 'errors' (boolean)
+* errors: boolean array
 
 chinj_scan
 ----------
