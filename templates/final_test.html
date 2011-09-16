@@ -14,6 +14,7 @@
  </div>
 </div>
 
+{#record}
 {>"config_header.html"/}
 
 <div style="display:table">
@@ -62,7 +63,7 @@
    <td rowspan=2><textarea name="db0_comments" rows=4 cols=40>{db0_comments}</textarea></td>
   </tr>
   <tr>
-   <td><input type="checkbox" name="db0_dark_matter" value="__checkbox_true" {?db0_dark_matter}checked{/db0_dark_matter}/>Dark Matter</td>
+   <td>DM: <input type="text" name="db0_dark_matter" value="{db0_dark_matter}" size=5</td>
   </tr>
   <tr>
    <td><strong>DB 1</strong></td>
@@ -70,7 +71,7 @@
    <td rowspan=2><textarea name="db1_comments" rows=4 cols=40>{db1_comments}</textarea></td>
   </tr>
   <tr>
-   <td><input type="checkbox" name="db1_dark_matter" value="__checkbox_true" {?db1_dark_matter}checked{/db1_dark_matter}/>Dark Matter</td>
+   <td>DM: <input type="text" name="db1_dark_matter" value="{db1_dark_matter}" size=5</td>
   </tr>
   <tr>
    <td><strong>DB 2</strong></td>
@@ -78,7 +79,7 @@
    <td rowspan=2><textarea name="db2_comments" rows=4 cols=40>{db2_comments}</textarea></td>
   </tr>
   <tr>
-   <td><input type="checkbox" name="db2_dark_matter" value="__checkbox_true" {?db2_dark_matter}checked{/db2_dark_matter}/>Dark Matter</td>
+   <td>DM: <input type="text" name="db2_dark_matter" value="{db2_dark_matter}" size=5</td>
   </tr>
   <tr>
    <td><strong>DB 3</strong></td>
@@ -86,11 +87,12 @@
    <td rowspan=2><textarea name="db3_comments" rows=4 cols=40>{db3_comments}</textarea></td>
   </tr>
   <tr>
-   <td><input type="checkbox" name="db3_dark_matter" value="__checkbox_true" {?db3_dark_matter}checked{/db3_dark_matter}/>Dark Matter</td>
+   <td>DM: <input type="text" name="db3_dark_matter" value="{db3_dark_matter}" size=5</td>
   </tr>
  </table>
 </div>
 </form>
+{/record}
 
 <div style="display:table-cell">
 <h3>Tests</h3>
