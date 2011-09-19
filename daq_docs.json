@@ -1,7 +1,6 @@
 [
 {
    "_id": "CRATE_INIT_DOC",
-   "_rev": "2-66d4904fb803954f4c83df1bcf1b02e9",
    "vbal": [
        [
            110,
@@ -441,7 +440,6 @@
 },
 {
    "_id": "CTC_doc",
-   "_rev": "4-075a0dd153ac0bb307c94470863d78de",
    "delay": [
        "0",
        "0",
@@ -466,7 +464,6 @@
 },
 {
    "_id": "MTC_doc",
-   "_rev": "7-e3fee6170ad5bc27f3e94b7e617491f4",
    "name": "MTC",
    "time ": null,
    "board_id": null,
