@@ -5,8 +5,9 @@ Results of all electronics testing through penn_daq are automatically logged to 
 Installation
 ------------
 Dependencies:
- * Apache CouchDB v1.1.0 or higher (http://couchdb.apache.org)
- * kanso (http://kansojs.com)
+
+* Apache CouchDB v1.1.0 or higher (http://couchdb.apache.org)
+* kanso (http://kansojs.com)
 
 From within the project directory,
 
