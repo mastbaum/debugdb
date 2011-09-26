@@ -22,11 +22,12 @@
 <h4>Target time: {target_time}</h4>
 <div style="display:table;width:12%;text-align:center">
  <div style="display:table-row">
-  <div style="display:table-cell;font-weight:bold">&nbsp;</div>
+  <div style="display:table-cell;font-weight:bold">Chip</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">Errors</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">RMP</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">VSI</div>
-  <div style="display:table-cell;font-weight:bold">Times</div>
+  <div style="display:table-cell;font-weight:bold">Channel</div>
+  <div style="display:table-cell;font-weight:bold">Time</div>
  </div>
   {#chips}
   <div style="display:table-row;background:{color};">
@@ -46,10 +47,10 @@
    <div style="display:table-cell">
     {vsi}
    </div>
-   <div style="display:table-cell">
-    {#times}
-     {.}<br/>
-    {/times}
+   <div style="display:table-cell;text-align:left">
+    {#channels}
+     {id}:&nbsp;{time}<br/>
+    {/channels}
    </div>
   </div>
   {/chips}
