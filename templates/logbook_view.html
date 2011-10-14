@@ -1,0 +1,29 @@
+<h1 style="margin-bottom:10px;"><a href="{baseURL}/logbook">Debugging Log Book</a></h1>
+<form action="" method="POST">
+  <input type="hidden" name="id" value="{_id}"/>
+  <input type="hidden" name="title" value="{title}">
+  <h2>{title}&nbsp;<span style="font-size:8pt;font-weight:normal">(Last modified: {created})</span></h2>
+  <textarea name="text" rows="25" cols="80">{text}</textarea>
+  <br/><br/>
+
+  <div>
+    <input type="submit" value="Save" style="border:solid 1px black;font-size:12pt;color:black;background:#90ee90"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#confirm_delete" class="boxy" title="Delete">
+      <span style="border:solid 1px black;font-size:12pt;color:black;background:pink;padding:3px;position:relative;top:2px">Delete</span>
+    </a>
+
+    <div id="confirm_delete" style="display:none;color:black;padding:15px"> 
+      Are you sure you wish to delete log entry "{title}"?
+      <br/><br/> 
+      <div style="width:100%;text-align:center"><a href="{baseURL}/logbook/delete/{_id}" onClick="Boxy.get(this).hide()">Delete</a></div> 
+    </div> 
+
+    <script type='text/javascript'> 
+      $(function() {
+          $('.boxy').boxy();
+          });
+</script> 
+  </div>
+</form> 
+

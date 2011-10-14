@@ -1,0 +1,22 @@
+<h1 style="margin-bottom:10px;">Debugging Log Book Search</h1>
+<div>
+  Search titles: <input type="search" id="search_key" name="search_key"/>&nbsp;<button id="search_button">Go</button>
+</div>
+<script>
+  $("#search_button").click(function(event) {
+    window.location.href = '{baseURL}/logbook/search/' + $("#search_key").val();
+  });
+</script>
+
+<br/>
+<h2>Results</h2>
+{?rows}
+<ul>
+  {#rows}
+  <li><a style="font-weight:bold;font-size:medium" href="{baseURL}/logbook/{id}">{title}</a></li>
+  {/rows}
+</ul>
+{:else}
+<h2>No matching entries found</h2>
+{/rows}
+

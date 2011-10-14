@@ -1,0 +1,38 @@
+<h1 style="margin-bottom:10px;">Debugging Log Book</h1>
+<div style="width:50%">
+  <div style="float:left">
+    <a href="{baseURL}/logbook/new" style="font-size:large">New Entry</a>
+  </div>
+  <div style="float:right">
+    Search titles: <input type="search" id="search_key" name="search_key"/>&nbsp;<button id="search_button">Go</button>
+  </div>
+</div>
+<script>
+  $("#search_button").click(function(event) {
+    window.location.href = '{baseURL}/logbook/search/' + $("#search_key").val();
+  });
+</script>
+
+<br/><br/>
+
+<div style="padding-top:10px">
+  {?rows}
+  <table style="min-width:500px;border:solid 1px black">
+    {#rows}
+    <tr>
+      <td><a style="font-weight:bold;font-size:medium" href="{baseURL}/logbook/{id}">{title}</a></td>
+      <td>{clip}</td>
+      <td>{created}</td>
+    </tr>
+    {/rows}
+    <tr>
+      <td style="border-bottom:solid 1px black"></td>
+      <td style="border-bottom:solid 1px black"></td>
+      <td style="border-bottom:solid 1px black"></td>
+    </tr>
+  </table>
+  {:else}
+  <h2>No logbook entries</h2>
+  {/rows}
+</div>
+
