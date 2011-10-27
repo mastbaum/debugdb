@@ -8,9 +8,9 @@
  {#rows}
   <tr>
    {?noquotes}
-     <td><a href="{baseURL}/{type}?key={id}">{id}</a></td>
+   <td><a href="{baseURL}/{type}?startkey=[{id}]&endkey=[{id},{}]">{id}</a></td>
    {:else}
-     <td><a href="{baseURL}/{type}?key=&#34;{id}&#34;">{id}</a></td>
+   <td><a href="{baseURL}/{type}?startkey=[&#34;{id}&#34;]&endkey=[&#34;{id}&#34;,{}]">{id}</a></td>
    {/noquotes}
    <td style="text-align:center">{count}</td>
  {/rows}
