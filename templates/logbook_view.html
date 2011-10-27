@@ -12,18 +12,18 @@
     <a href="#confirm_delete" class="boxy" title="Delete">
       <span style="border:solid 1px black;font-size:12pt;color:black;background:pink;padding:3px;position:relative;top:2px">Delete</span>
     </a>
-
-    <div id="confirm_delete" style="display:none;color:black;padding:15px"> 
-      Are you sure you wish to delete log entry "{title}"?
-      <br/><br/> 
-      <div style="width:100%;text-align:center"><a href="{baseURL}/logbook/delete/{_id}" onClick="Boxy.get(this).hide()">Delete</a></div> 
-    </div> 
-
-    <script type='text/javascript'> 
-      $(function() {
-          $('.boxy').boxy();
-          });
-</script> 
   </div>
 </form> 
+
+<div id="confirm_delete" style="display:none;color:black;padding:15px"> 
+  Are you sure you wish to delete log entry "{title}"?
+  <br/><br/> 
+  <div style="width:100%;text-align:center"><form action="{baseURL}/logbook/delete/{_id}" method="POST"><input type="submit" onClick="Boxy.get(this).hide()" value="Delete"/></form></div> 
+</div> 
+
+<script type='text/javascript'> 
+  $(function() {
+    $('.boxy').boxy();
+  });
+</script> 
 
