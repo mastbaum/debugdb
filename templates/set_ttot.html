@@ -23,22 +23,14 @@
 <div style="display:table;width:25%;text-align:center">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">Chip</div>
-  <div style="display:table-cell;text-align:center;font-weight:bold">Errors</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">RMP</div>
   <div style="display:table-cell;text-align:center;font-weight:bold">VSI</div>
   <div style="display:table-cell;font-weight:bold">Channel: Time</div>
  </div>
-  {#chips}
+ {#chips}
   <div style="display:table-row;background:{color};">
    <div style="display:table-cell;text-align:right;font-weight:bold;padding:3px">
     {id}
-   </div>
-   <div style="display:table-cell;text-align:center;padding-bottom:2px">
-   {?errors}
-    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
-   {:else}
-    <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
-   {/errors}
    </div>
    <div style="display:table-cell">
     {rmp}
@@ -46,13 +38,26 @@
    <div style="display:table-cell">
     {vsi}
    </div>
-   <div style="display:table-cell;text-align:left">
-    {#channels}
-     {id}:&nbsp;{time}<br/>
-    {/channels}
+   <div style="display:table-cell;text-align:center;padding-bottom:2px">
+    <div style="display:table">
+     {#channels}
+      <div style="display:table-row">
+       <div style="display:table-cell">
+<script>console.log("{error}")</script>
+        {#error}
+         <span style="display:inline-block;width:12px;background:red;color:white;vertical-align:middle;font-weight:bold" title="{hint}">{errors}</span>
+        {:else}
+         <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+        {/error}
+       </div>
+       <div style="display:table-cell;padding-left:10px;font-weight:bold">{id}</div>
+       <div style="display:table-cell;padding-left:10px">{time}</div>
+      </div>
+     {/channels}
+    </div>
    </div>
   </div>
-  {/chips}
+ {/chips}
 </div>
 
 {>"test_footer.html"/}
