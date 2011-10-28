@@ -22,7 +22,8 @@
 <div style="display:table">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">Channel</div>
-  <div style="display:table-cell;text-align:center;font-weight:bold;padding-left:10px">Results</div>
+  <div style="display:table-cell">&nbsp;</div>
+  <div style="display:table-cell;text-align:center;font-weight:bold;padding-left:10px">Errors</div>
  </div>
   {#channels}
   <div style="display:table-row">
@@ -30,7 +31,14 @@
     {id}
    </div>
    <div style="display:table-cell;padding-left:10px">
-    {results}
+    {#error}
+     <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+    {:else}
+     <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+    {/error}
+   </div>
+   <div style="display:table-cell;padding-left:10px">
+    {error}
    </div>
   </div>
   {/channels}
