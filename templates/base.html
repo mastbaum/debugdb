@@ -5,6 +5,7 @@
  <link rel="stylesheet" href="{baseURL}/static/css/style.css">
  <link rel="stylesheet" href="{baseURL}/static/css/boxy.css">
  <script src="{baseURL}/static/js/jquery-1.5.2.min.js"></script>
+ <script src="{baseURL}/static/js/jquery.hotkeys.js"></script>
  <script src="{baseURL}/static/js/json2.js"></script>
  <script src="{baseURL}/kanso.js"></script>
  <script src="{baseURL}/static/js/jquery.boxy.js"></script>
@@ -16,6 +17,13 @@
      b.style['background-image'] = 'url({baseURL}/static/images/summer.jpg)';
      b.style['background-size'] = '100%';
  }
+ $(document).bind('keydown', 'c', function(event) {
+     event.stopPropagation();
+     event.preventDefault();
+     $("span").filter(function() {
+         return ( $(this).css('background-color') == 'rgb(0, 128, 0)' );
+     }).css('background-color', 'blue');
+ });
  </script>
 </head>
 <body id=bodyid class="dashboard" style="width:100%" onLoad="setCheckboxes()">
