@@ -19,7 +19,7 @@
 <h3 style="padding-bottom:5px">
  Results:&nbsp;
 </h3>
-<h4>Target time: {target_time}</h4>
+<h4>Target time: {targettime}</h4>
 <div style="display:table;width:12%;">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">&nbsp;</div>
@@ -32,11 +32,11 @@
     {id}
    </div>
    <div style="display:table-cell;text-align:center;padding-bottom:2px">
-   {?errors}
-    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+   {#error}
+    <span title="{hint}" style="display:inline-block;width:12px;background:red;color:white;font-weight:bold;vertical-align:middle">{errors}</span>
    {:else}
     <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
-   {/errors}
+   {/error}
    </div>
    <div style="display:table-cell">
     {time}
