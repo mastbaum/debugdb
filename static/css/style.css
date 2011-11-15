@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .button{
 	display:table-cell;
 	vertical-align:middle;
