@@ -8,7 +8,7 @@
    {/pass}
   </div>
   <div style="display:table-cell">
-   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">See Reflections Test</a></h1>
+   <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">See Reflections Test</a></h1>
    <h3 style="color:black;margin-top:-6px">{created}</h3>
   </div>
  </div>
@@ -22,7 +22,8 @@
 <div style="display:table">
  <div style="display:table-row">
   <div style="display:table-cell;font-weight:bold">Channel</div>
-  <div style="display:table-cell;text-align:center;font-weight:bold;padding-left:10px">Results</div>
+  <div style="display:table-cell">&nbsp;</div>
+  <div style="display:table-cell;text-align:center;font-weight:bold;padding-left:10px">Errors</div>
  </div>
   {#channels}
   <div style="display:table-row">
@@ -30,7 +31,14 @@
     {id}
    </div>
    <div style="display:table-cell;padding-left:10px">
-    {results}
+    {#error}
+     <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+    {:else}
+     <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+    {/error}
+   </div>
+   <div style="display:table-cell;padding-left:10px">
+    {error}
    </div>
   </div>
   {/channels}

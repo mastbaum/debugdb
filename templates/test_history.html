@@ -4,6 +4,7 @@
   <tr>
    <th>Type</th>
    <th>Status</th>
+   <th>Date</th>
    <th>Configuration</th>
   </tr>
  {#rows}
@@ -14,14 +15,14 @@
    {:else}
     <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
    {/value.pass}
+   <td>{value.short_created}</td>
    <td>
     <dl>
-    <dt>{value.short_created}</dt>
-    <dt>@ {value.loc}</dt>
-    <dt>FEC <a href="{baseURL}/fec?key=&#34;{value.config.fec_id}&#34;">{value.config.fec_id}</a></dt>
+    <dt>Location: {value.config.loc}</dt>
+    <dt>FEC <a href="{baseURL}/fec?startkey=[&#34;{value.config.fec_id}&#34;]&endkey=[&#34;{value.config.fec_id}&#34;,{}]">{value.config.fec_id}</a></dt>
     <dt>DBs</dt>
     {#value.config.db}
-     <a href="{baseURL}/db?key=&#34;{db_id}&#34;">{db_id}</a><br/>
+     <a href="{baseURL}/db?startkey=[&#34;{db_id}&#34;]&endkey=[&#34;{db_id}&#34;,{}]">{db_id}</a><br/>
     {/value.config.db}
     </dl>
    </td>

@@ -8,7 +8,7 @@
    {/pass}
   </div>
   <div style="display:table-cell">
-   <h1 style="color:black;"><a href="{baseURL}/test?key=&#34;{type}&#34;">CMOS M GTVALID Test</a></h1>
+   <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">CMOS M GTVALID Test</a></h1>
    <h3 style="color:black;margin-top:-6px">{created}</h3>
   </div>
  </div>
@@ -20,6 +20,17 @@
  Results:&nbsp;
 </h3>
 <table border=0>
+ <tr>
+  <th>Slot Errors</th>
+  <td>
+   {#slot_error}
+    <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+   {:else}
+    <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+   {/slot_error}
+   <span style="padding-left:10px">{slot_error_hint}</span>
+  </td>
+ </tr>
  <tr>
   <th>TAC ref</th>
   <td>{tacref}</td>
