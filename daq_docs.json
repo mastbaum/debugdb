@@ -627,6 +627,9 @@
 {
    "_id": "_design/crate_init_views",
    "views": {
+       "get_ecal": {
+           "map": "function (doc) {\n  if (doc.type && doc.ecal_id){\n    emit(doc.ecal_id,doc);\n   }\n   }"
+       },
        "get_crate_cbal": {
            "map": "function (doc) {\n  if (doc.type){\n    if (doc.type == 'crate_cbal'){\n       emit([doc.config.fec_id,doc.config.db[0].db_id,doc.config.db[1].db_id,doc.config.db[2].db_id,doc.config.db[3].db_id,doc.timestamp],doc);\n    }\n   }\n   }"
        },
@@ -635,7 +638,18 @@
        },
        "get_zdisc": {
            "map": "function (doc) {\n  if (doc.type){\n    if (doc.type == 'zdisc'){\n       emit([doc.config.fec_id,doc.config.db[0].db_id,doc.config.db[1].db_id,doc.config.db[2].db_id,doc.config.db[3].db_id,doc.timestamp],doc);\n    }\n   }\n   }"
+       },
+       "get_cmos": {
+           "map": "function (doc) {\n  if (doc.type){\n    if (doc.type == 'cmos_m_gtvalid'){\n       emit([doc.config.fec_id,doc.config.db[0].db_id,doc.config.db[1].db_id,doc.config.db[2].db_id,doc.config.db[3].db_id,doc.timestamp],doc);\n    }\n   }\n   }"
        }
    }
+},
+{
+  "_id": "_design/penn_daq_views",
+  "views": {
+    "get_fec": {
+      "map": "function(doc) {\n  if (doc.name){\n   if (doc.name=='FEC'){\n emit([doc.crate,doc.card],doc);\n   }\n   }\n    }"
+    }
+  }
 }
 ]
