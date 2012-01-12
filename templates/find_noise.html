@@ -1,0 +1,78 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+  <div style="display:table-row">
+    <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+      {#pass}
+      <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+      {:else}
+      <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+      {/pass}
+    </div>
+    <div style="display:table-cell">
+      <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">Noise Finder Test</a></h1>
+      <h3 style="color:black;margin-top:-6px">{created}</h3>
+    </div>
+  </div>
+</div>
+
+{>"config_header.html"/}
+
+<h3 style="padding-bottom:5px">
+  Results:&nbsp;
+</h3>
+<div style="display:table;width:25%;text-align:center">
+  <div style="display:table-row;">
+    <div style="padding-right:20px;display:table-cell;font-weight:bold">Channel</div>
+    <div style="padding-right:20px;display:table-cell;text-align:center;font-weight:bold">DAC</div>
+    <div style="padding-right:20px;display:table-cell;text-align:center;font-weight:bold">&Delta;DAC</div>
+    <div style="display:table-cell;font-weight:bold">Noise Profile</div>
+  </div>
+  {#channels}
+  <div style="display:table-row;background:{color};">
+    <div style="display:table-cell;font-weight:bold;padding:3px;vertical-align:middle">
+      {id}
+    </div>
+    <div style="display:table-cell;vertical-align:middle">
+      {dac_setting}
+    </div>
+    <div style="display:table-cell;vertical-align:middle">
+      {dac_delta}
+    </div>
+    <div style="display:table-cell;text-align:center;padding:2px;">
+      <div id="noise-prof-{id}" style="width:300px;height:150px;"></div>
+    </div>
+  </div>
+  <script language="javascript">
+    $(function() {
+      var bplot = [{#baseline_noise_profile} [{id},{value}], {/baseline_noise_profile}];
+      var rplot = [{#readout_noise_profile} [{id},{value}], {/readout_noise_profile}];
+      $.plot($("#noise-prof-{id}"), [
+        {label: "Baseline", data: bplot},
+        {label: "Readout", data: rplot}
+        ], {
+        yaxis: {
+          ticks: function tickGen(ax) {
+            var t = [];
+            var v = 1;
+            do {
+              t.push(v);
+              v *= 10;
+            } while (v < ax.max);
+            return t;
+          },
+          transform: function (v) {
+            if (v<=0) v=0.0001;
+            return Math.log(v);
+          },
+          inverseTransform: function (v) {
+            return Math.exp(v);
+          }
+        } 
+      });
+    });
+  </script>
+  <div style="display:table-row"><div style="display:table-cell;height:10px;">&nbsp;</div></div>
+  {/channels}
+</div>
+
+{>"test_footer.html"/}
+
