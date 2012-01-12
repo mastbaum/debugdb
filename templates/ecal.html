@@ -1,0 +1,159 @@
+{#record}
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+  <div style="display:table-row">
+    <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+      {#pass}
+      <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
+      {:else}
+      <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
+      {/pass}
+    </div>
+    <div style="display:table-cell">
+      <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">ECAL</a></h1>
+      <h3 style="color:black;margin-top:-6px">{created}</h3>
+    </div>
+  </div>
+</div>
+
+{!{>"config_header.html"/}!}
+
+<h3>ECAL Settings</h3>
+{#settings}
+<table>
+  <tr>
+    <th>Vint</th>
+    <td>{vint}</td>
+  </tr>
+  <tr>
+    <th>HVref</th>
+    <td>{hvref}</td>
+  </tr>
+  <tr>
+    <th>SCMOS</th>
+    <td>
+      <table>
+        <tr>
+          <th>Channel</th>
+          {#scmos_ids}
+          <td style="font-weight:bold;width:25px">{.}</td>
+          {/scmos_ids}
+        </tr>
+        <tr>
+          <th>Value</th>
+          {#scmos}
+          <td style="width:25px">{.}</td>
+          {/scmos}
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <th>NHIT100</th>
+    {#tr100}
+    <td>
+      <table>
+        <tr>
+          <th>Enabled</th>
+          {#mask}
+          <td style="width:25px;"><span style="width:12px;background:{#.}blue{:else}red{/.};color:white;text-align:center;display:inline-block;font-weight:bold">{.}</span></td>
+          {/mask}
+        </tr>
+        <tr>
+          <th>Delay</th>
+          {#delay}
+          <td>{.}</td>
+          {/delay}
+        </tr>
+      </table>
+    </td>
+    {/tr100}
+  </tr>
+  <tr>
+    <th>NHIT20</th>
+    {#tr20}
+    <td>
+      <table>
+        <tr>
+          <th>Enabled</th>
+          {#mask}
+          <td style="width:25px;"><span style="width:12px;background:{#.}blue{:else}red{/.};color:white;text-align:center;display:inline-block;font-weight:bold">{.}</span></td>
+          {/mask}
+        </tr>
+        <tr>
+          <th>Delay</th>
+          {#delay}
+          <td>{.}</td>
+          {/delay}
+        </tr>
+        <tr>
+          <th>Width</th>
+          {#width}
+          <td>{.}</td>
+          {/width}
+        </tr>
+      </table>
+    </td>
+    {/tr20}
+  </tr>
+</table>
+{/settings}
+
+<h3>Tests</h3>
+{?tests}
+<table>
+  {#tests}
+  <tr>
+    <td>
+      {?pass}
+      <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+      {:else}
+      <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+      {/pass}
+    </td>
+    <td><a href="{baseURL}/{type}/{id}">{type}</a></td>
+    <td>{created}</td>
+  </tr>
+  {/tests}
+</table>
+{:else}
+<strong>No tests</strong>
+{/tests}
+
+<h3>Detector Configuration</h3>
+<table>
+  {#crates}
+  <tr style="border:solid 1px #eee">
+    <th style="text-align:center">{crate_id}<br><span style="font-size:smaller">(0x{slot_mask})</span></th>
+    {#slots}
+    <td style="border-right:solid 1px #eee;{#enabled}{:else}background:#eee{/enabled}">
+      <table>
+        <tr>
+          <th>Slot</th>
+          <td>{slot_id}</td>
+        </tr>
+        <tr>
+          <th>FEC</th>
+          <td>{mb_id}</td>
+        </tr>
+        <tr>
+          <th style="border-bottom:none;">DBs</th>
+          <td style="border-bottom:none;">
+            <ol>
+              <li>{db0_id}</li>
+              <li>{db1_id}</li>
+              <li>{db2_id}</li>
+              <li>{db3_id}</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+    </td>
+    {/slots}
+  </tr>
+  {/crates}
+</table>
+
+<br/>
+{>"test_footer.html"/}
+{/record}
+
