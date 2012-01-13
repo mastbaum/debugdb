@@ -103,27 +103,6 @@
   </tr>
 </table>
 
-<h3>Tests</h3>
-{?tests}
-<table>
-  {#tests}
-  <tr>
-    <td>
-      {?pass}
-      <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
-      {:else}
-      <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
-      {/pass}
-    </td>
-    <td><a href="{baseURL}/{type}/{id}">{type}</a></td>
-    <td>{created}</td>
-  </tr>
-  {/tests}
-</table>
-{:else}
-<strong>No tests</strong>
-{/tests}
-
 <h3>Detector Configuration</h3>
 <table>
   {#crates}
@@ -156,6 +135,27 @@
             </ol>
           </td>
           {/db0_id}
+        </tr>
+        <tr>
+          {?tests}
+          <th>Tests</th>
+          <td>
+            <table>
+              {#tests}
+              <tr>
+                <td>
+                  {?pass}
+                  <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+                  {:else}
+                  <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+                  {/pass}
+                </td>
+                <td><a href="{baseURL}/{type}/{id}">{type}</a></td>
+              </tr>
+              {/tests}
+            </table>
+          </td>
+          {/tests}
         </tr>
       </table>
     </td>
