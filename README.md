@@ -14,7 +14,4 @@ From within the project directory,
     $ kanso push <database name>
     $ kanso pushdata <database name> daq_docs.json
 
-and optionally
-
-    $ kanso pushadmin <database name>
 
