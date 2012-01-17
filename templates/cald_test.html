@@ -5,70 +5,76 @@
     <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
    {:else}
     <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
-   {/pass}
+    {/pass}
   </div>
   <div style="display:table-cell">
-   <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">CALD Test</a></h1>
-   <h3 style="color:black;margin-top:-6px">{created}</h3>
+    <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">CALD Test</a></h1>
+    <h3 style="color:black;margin-top:-6px">{created}</h3>
   </div>
- </div>
+  <div style="table-cell">
+    {#archived}
+    {:else}
+    <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
+    {/archived}
+  </div>
+</div>
 </div>
 
 {>"config_header.html"/}
 
 <h3 style="padding-bottom:5px">
- Results:&nbsp;
+  Results:&nbsp;
 </h3>
 
 <h4>ADC values</h4>
 <div id="adcs" style="width:600px;height:300px;"></div>
 
 <script type="text/javascript">
-$(function () {
-    var dac_value = [];
-    var adc_0 = [];
-    var adc_1 = [];
-    var adc_2 = [];
-    var adc_3 = [];
+  $(function () {
+      var dac_value = [];
+      var adc_0 = [];
+      var adc_1 = [];
+      var adc_2 = [];
+      var adc_3 = [];
 
-    var i = 0;
-    {#dac_value}
-     dac_value.push({.});
-     i += 1;
-    {/dac_value}
-    
-    i = 0;
-    {#adc_0}
-     adc_0.push([dac_value[i], {.}]);
-     i += 1;
-    {/adc_0}
+      var i = 0;
+      {#dac_value}
+      dac_value.push({.});
+      i += 1;
+      {/dac_value}
 
-    i = 0;
-    {#adc_1}
-     adc_1.push([dac_value[i], {.}]);
-     i += 1;
-    {/adc_1}
+      i = 0;
+      {#adc_0}
+      adc_0.push([dac_value[i], {.}]);
+      i += 1;
+      {/adc_0}
 
-    i = 0;
-    {#adc_2}
-     adc_2.push([dac_value[i], {.}]);
-     i += 1;
-    {/adc_2}
+      i = 0;
+      {#adc_1}
+      adc_1.push([dac_value[i], {.}]);
+      i += 1;
+      {/adc_1}
 
-    i = 0;
-    {#adc_3}
-     adc_3.push([dac_value[i], {.}]);
-     i += 1;
-    {/adc_3}
+      i = 0;
+      {#adc_2}
+      adc_2.push([dac_value[i], {.}]);
+      i += 1;
+      {/adc_2}
 
-    $.plot($("#adcs"), [
-        { label: "ADC 0",  data: adc_0},
-        { label: "ADC 1",  data: adc_1},
-        { label: "ADC 2",  data: adc_2},
-        { label: "ADC 3",  data: adc_3}
-    ]);
+      i = 0;
+      {#adc_3}
+      adc_3.push([dac_value[i], {.}]);
+      i += 1;
+      {/adc_3}
 
-});
+      $.plot($("#adcs"), [
+          { label: "ADC 0",  data: adc_0},
+          { label: "ADC 1",  data: adc_1},
+          { label: "ADC 2",  data: adc_2},
+          { label: "ADC 3",  data: adc_3}
+          ]);
+
+  });
 </script>
 
 {>"test_footer.html"/}

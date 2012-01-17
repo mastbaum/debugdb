@@ -7,7 +7,7 @@ Installation
 Dependencies:
 
 * Apache CouchDB v1.1.0 or higher (http://couchdb.apache.org)
-* kanso (http://kansojs.com)
+* kanso 0.0.7 (http://kansojs.com)
 
 From within the project directory,
 

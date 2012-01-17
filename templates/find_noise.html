@@ -11,6 +11,12 @@
       <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">Noise Finder Test</a></h1>
       <h3 style="color:black;margin-top:-6px">{created}</h3>
     </div>
+    <div style="table-cell">
+      {#archived}
+      {:else}
+      <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
+      {/archived}
+    </div>
   </div>
 </div>
 
@@ -46,9 +52,9 @@
       var bplot = [{#baseline_noise_profile} [{id},{value}], {/baseline_noise_profile}];
       var rplot = [{#readout_noise_profile} [{id},{value}], {/readout_noise_profile}];
       $.plot($("#noise-prof-{id}"), [
-        {label: "Baseline", data: bplot},
-        {label: "Readout", data: rplot}
-        ], {
+      {label: "Baseline", data: bplot},
+      {label: "Readout", data: rplot}
+      ], {
         yaxis: {
           ticks: function tickGen(ax) {
             var t = [];

@@ -11,6 +11,12 @@
    <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">Crate CBAL Test</a></h1>
    <h3 style="color:black;margin-top:-6px">{created}</h3>
   </div>
+  <div style="table-cell">
+    {#archived}
+    {:else}
+    <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
+    {/archived}
+  </div>
  </div>
 </div>
 
