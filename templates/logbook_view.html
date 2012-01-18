@@ -3,7 +3,13 @@
   <input type="hidden" name="id" value="{_id}"/>
   <input type="hidden" name="title" value="{title}">
   <h2>{title}&nbsp;<span style="font-size:8pt;font-weight:normal">(Last modified: {created})</span></h2>
-  <textarea name="text" rows="25" cols="80">{text}</textarea>
+  <table>
+    <tr>
+      <td><textarea name="text" rows="25" cols="80">{text}</textarea></td>
+      <td><div id="mentions"></div></td>
+    </tr>
+  </table>
+
   <br/><br/>
 
   <div>
@@ -25,5 +31,61 @@
   $(function() {
     $('.boxy').boxy();
   });
+
+  var test_names = ['cald_test', 'cgt_test', 'chinj_scan', 'cmos_m_gtvalid', 'crate_cbal', 'disc_check', 'fec_test', 'fifo_test', 'final_test', 'find_noise', 'get_ttot', 'mb_stability_test', 'mem_test', 'ped_run', 'see_refl', 'set_ttot', 'vmon', 'zdisc'];
+
+  var s = "{text|s}";
+  var baseURL = "{baseURL}";
+  var mention_links = [];
+
+  var idx = 0;
+  do {
+    var matched = false;
+    idx = s.indexOf("@", idx+1);
+
+    // test names
+    for (i in test_names) {
+      if (s.substring(idx+1, idx + test_names[i].length+1).toLowerCase() == test_names[i]) {
+        var tn = test_names[i];
+        mention_links.push({
+          name: 'Test ' + tn,
+          url: baseURL + '/test?startkey=[%22' + tn + '%22]&endkey=[%22' + tn + '%22,{}]'
+        });
+        matched = true;
+        break;
+      }
+    }
+    if (matched) continue;
+
+    // fec
+    if (s.substring(idx+1, idx+2).toLowerCase() == "f" || s.substring(idx+1, idx+2).toLowerCase() == "m") {
+      var fid = s.substring(idx+1, idx+5);
+      mention_links.push({
+        name: 'FEC ' + fid,
+        url: baseURL + '/fec?startkey=[%22' + fid + '%22]&endkey=[%22' + fid + '%22,{}]'
+      });
+      continue;
+    }
+
+    // db
+    if (s.substring(idx+1, idx+2).toLowerCase() == "d") {
+      var dbid = s.substring(idx+1, idx+5);
+      mention_links.push({
+        name: 'DB ' + dbid,
+        url: baseURL + '/db?startkey=[%22' + dbid + '%22]&endkey=[%22' + dbid + '%22,{}]'
+      });
+      continue;
+    }
+  } while (idx != -1);
+
+  if (mention_links.length > 0) {
+    $("#mentions").append('<h4>Mentioned in this entry</h4>');
+  }
+
+  for (m in mention_links) {
+    var html = '<li><a href="'+mention_links[m].url+'">'+mention_links[m].name+'</a></li>'
+    $("#mentions").append(html);
+  }
+
 </script> 
 
