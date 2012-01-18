@@ -648,7 +648,7 @@
   "_id": "_design/penn_daq_views",
   "views": {
     "get_fec": {
-      "map": "function(doc) {\n  if (doc.name){\n   if (doc.name=='FEC'){\n emit([doc.crate,doc.card],doc);\n   }\n   }\n    }"
+      "map": "function(doc) {\n  if (doc.name){\n   if (doc.name=='FEC'){\n emit([doc.crate,doc.card,doc.time_stamp],doc);\n   }\n   }\n    }"
     }
   }
 }
