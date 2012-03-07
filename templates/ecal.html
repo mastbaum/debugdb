@@ -18,6 +18,22 @@
 <h4>This test is archived. <a href="{baseURL}/test_unarchive/{_id}">Unarchive</a></h4>
 {/archived}
 
+{?bad_tests}
+<h3>Warning: Corrupted tests</h3>
+<table>
+  <tr>
+    <td>
+      <div class="ui-icon ui-icon-alert"></div>
+    </td>
+    <td>
+        {#bad_test_list}
+        <li>ID: "{test_id}"</li>
+        {/bad_test_list}
+    </td>
+  </tr>
+</table>
+{/bad_tests}
+
 <h3>ECAL Settings</h3>
 {#settings}
 <table>
