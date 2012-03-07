@@ -8,6 +8,7 @@
   <tr>
     <th>&nbsp;</th>
     <th>Type</th>
+    <th>Crates</th>
     <th>Date</th>
   </tr>
   {#rows}
@@ -20,6 +21,11 @@
       {/value.archived}
     </td>
     <td><a href="{baseURL}/{value.type}/{id}">{value.type}</a></td>
+    <td>
+      {#crate_meta}
+      <li><a href="{baseURL}/crate?startkey=[{crate_id}]&endkey=[{crate_id},{}]">{crate_id}</a> (0x{mask})</li>
+      {/crate_meta}
+    </td>
     <td>{value.short_created}</td>
   </tr>
   {/rows}
