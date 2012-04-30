@@ -1,11 +1,39 @@
 <h1 style="margin-bottom:10px;"><a href="{baseURL}/tags?group_level=1">New Tag</a></h1>
 <form action="" method="POST">
-  <input id="_id" type="hidden" name="_id" value/>
-  <h2>Board: <input type="text" name="board" value="{board_id}"/></h2>
-  <h2>Author: <input type="text" name="author"/></h2>
-  <input type="text" name="created" value="{created}"/><br>
-  MB: <input type="text" name="mb" value=""/>, DB0: <input type="text" name="db0"/>, DB1: <input type="text" name="db1"/>, DB2: <input type="text" name="db2"/>, DB3: <input type="text" name="db3"/><br>
-  <textarea name="content" rows="25" cols="80"></textarea>
+<input id="_id" type="hidden" name="_id" value/>
+<table>
+  <tr>
+    <td><b>Board:</b></td><td><input type="text" name="board" value="{board_id}"/></td>
+  </tr>
+  <tr>
+    <td><b>Author:</b></td><td><input type="text" name="author"/></td>
+  </tr>
+  <tr>
+    <td><b>Date:</b></td><td><input type="text" name="created" value="{created}" size=50/></td>
+  </tr>
+  <tr>
+    <td><b>MB:</b></td><td><input type="text" name="mb" value="" size=4/></td>
+  </tr>
+  <tr>
+    <td><b>DBs:</b></td>
+    <td><input type="text" name="db0" size=4/>
+    <input type="text" name="db1" size=4/>
+    <input type="text" name="db2" size=4/>
+    <input type="text" name="db3" size=4/></td>
+  </tr>
+  <tr>
+    <td><b>Status:</b></td>
+    <td><input type="radio" name="status" value="gold"> Gold<br>
+        <input type="radio" name="status" value="silver"> Silver<br>
+        <input type="radio" name="status" value="bronze"> Bronze<br>
+        <input type="radio" name="status" value="bone"> Bone<br>
+        <input type="radio" name="status" value="none" checked> None</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><textarea name="content" rows="25" cols="80"></textarea></td>
+  </tr>
+</table>
   <br/><br/>
   <div>
     <input type="submit" value="Save" style="border:solid 1px black;font-size:12pt;color:black;background:#90ee90"/>
