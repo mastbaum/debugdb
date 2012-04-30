@@ -1,0 +1,58 @@
+{?rows}
+<style>
+td, th {
+  border-bottom: 0px;
+}
+</style>
+<script type='text/javascript'> 
+$(function() {
+  $('.boxy').boxy();
+});
+</script>
+
+<h1>All tags for {board_name} (Current status is: {current_status})</h1>
+<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
+<table>
+  {#rows}
+  <tr>
+    <td>
+    <table style="border-width: 1px; border-color:#000000;
+  border-style: solid; padding: 4px;">
+      <tr>
+        <td>{value.created}</td>
+      </tr>
+{?showauthor}
+      <tr>
+        <td>Author: {value.author}</td>
+      </tr>
+{/showauthor}
+{?showstatus}
+      <tr>
+        <td>Status: {value.status}</td>
+      </tr>
+{/showstatus}
+{?showsetup}
+      <tr>
+        <td>mb: {value.setup.mb}</td>
+      </tr>
+      <tr>
+        <td>dbs: {value.setup.db0}, {value.setup.db1}, {value.setup.db2}, {value.setup.db3}</td>
+      </tr>
+{/showsetup}
+      <tr>
+        <td>{value.content}</td>
+      </tr>
+      <tr>
+        <td><a href="{baseURL}/tags/{value.id}" style="font-size:7pt">({value.id})</a></td>
+      </tr>
+      </table>
+    </td>
+  </tr>
+  {/rows}
+</table>
+{:else}
+<h1>No tags found for board {board_name}</h1>
+<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
+{/rows}
+
+
