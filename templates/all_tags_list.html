@@ -1,0 +1,17 @@
+{?rows}
+<h1>All Tags by board</h1>
+ <table>
+  <tr>
+   <th>Board ID</th>
+   <th>Tags</th>
+  </tr>
+ {#rows}
+  <tr>
+   <td><a href="{baseURL}/tag?startkey=[&#34;{id}&#34;]&endkey=[&#34;{id}&#34;,{}]">{id}</a></td>
+   <td style="text-align:center">{count}</td>
+ {/rows}
+ </table>
+{:else}
+ <h1>No items found</h1>
+{/rows}
+

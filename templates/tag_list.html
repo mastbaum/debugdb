@@ -1,0 +1,31 @@
+{?rows}
+<style>
+td, th {
+  border-bottom: 0px;
+}
+</style>
+<h1>All tags for {board_name}</h1>
+<table>
+  {#rows}
+  <tr>
+    <td>
+    <table style="border-width: 1px; border-color:#000000;
+  border-style: solid; padding: 4px;">
+      <tr>
+        <td>{value.created}</td><td>{value.author}</td><td>{value.setup.mb}</td><td>{value.setup.db0}</td><td>{value.setup.db1}</td><td>{value.setup.db2}</td><td>{value.setup.db3}</td>
+      </tr>
+      <tr>
+        <td colspan=7>{value.content}</td>
+      </tr>
+      </table>
+    </td>
+  </tr>
+  {/rows}
+</table>
+<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
+{:else}
+<h1>No tests found</h1>
+<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
+{/rows}
+
+
