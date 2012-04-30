@@ -4,7 +4,14 @@ td, th {
   border-bottom: 0px;
 }
 </style>
+<script type='text/javascript'> 
+$(function() {
+  $('.boxy').boxy();
+});
+</script>
+
 <h1>All tags for {board_name}</h1>
+<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
 <table>
   {#rows}
   <tr>
@@ -17,15 +24,18 @@ td, th {
       <tr>
         <td colspan=7>{value.content}</td>
       </tr>
+      <tr>
+        <td colspan=7>
+        <a href="{baseURL}/tags/{value.id}" style="font-size:7pt">({value.id})</a>
+        </td>
+      </tr>
       </table>
     </td>
   </tr>
   {/rows}
 </table>
-<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
 {:else}
-<h1>No tests found</h1>
-<a href="{baseURL}/tag/new?board={board_name}" style="font-size:large">New Tag</a>
+<h1>No tags found for board {board_name}</h1>
 {/rows}
 
 
