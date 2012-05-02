@@ -5,11 +5,13 @@
   <tr>
    <th>Board ID</th>
    <th>Tags</th>
+   <th>Current Status</th>
   </tr>
  {#rows}
   <tr>
    <td><a href="{baseURL}/tag?startkey=[&#34;{id}&#34;]&endkey=[&#34;{id}&#34;,{}]">{id}</a></td>
    <td style="text-align:center">{count}</td>
+   <td style="text-align:center">{status|s}</td>
  {/rows}
  </table>
 {:else}
