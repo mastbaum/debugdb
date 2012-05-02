@@ -3,6 +3,9 @@
   .archived {display:none}
 </style>
 <h1>All tests for {system_name} {system_id}</h1>
+{?isaboard}
+<a href="{baseURL}/tag/new?board={system_id}" style="font-size:large">Create a Tag</a>
+{/isaboard}
 <div style="padding:10px;font-weight:bold;"><input type="checkbox" onclick="$('.archived').toggle()"/> Show archived tests</div>
 <table>
   <tr>
