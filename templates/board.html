@@ -1,0 +1,202 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+  <div style="display:table-row">
+    {#board}
+    <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
+      {#status}
+      {?none}???{/none}
+      {?gold}<img height="50px" src="{baseURL}/static/images/gold.png"/>{/gold}
+      {?silver}<img height="50px" src="{baseURL}/static/images/silver.png"/>{/silver}
+      {?bad}<img height="50px" src="{baseURL}/static/images/bad.png"/>{/bad}
+      {?bone}<img height="50px" src="{baseURL}/static/images/bone.png"/>{/bone}
+      {/status}
+    </div>
+    <div style="display:table-cell;vertical-align:middle">
+      <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">{_id}</a></h1>
+      <h3 style="color:black;margin-top:-6px">{board_type}</h3>
+    </div>
+    {/board}
+  </div>
+</div>
+<br/>
+
+<div style="display:table;width:100%">
+  <div style="display:table-row;width:100%">
+    <div style="display:table-cell;width:33%">
+      {#board}
+      <form action="" method=POST>
+        <h1>Board Metadata&nbsp;&nbsp;&nbsp;<input type="submit" value="Save"></h1>
+        <input type="hidden" name="board_id" value="{_id}">
+        <h3>Status</h3>
+        <select name="status">
+          <option value="none" {?status.none}selected{/status.none}>None</option>
+          <option value="gold" {?status.gold}selected{/status.gold}>Gold</option>
+          <option value="silver" {?status.silver}selected{/status.silver}>Silver</option>
+          <option value="bad" {?status.bad}selected{/status.bad}>Bad</option>
+          <option value="bone" {?status.bone}selected{/status.bone}>Bone</option>
+        </select>
+        <h3>Location</h3>
+        <select name="location">
+          <option value="unknown" {?location.unknown}selected{/location.unknown}>Unkown</option>
+          <option value="surface" {?location.surface}selected{/location.surface}>Surface</option>
+          <option value="underground" {?location.underground}selected{/location.underground}>Underground</option>
+          <option value="penn" {?location.penn}selected{/location.penn}>Penn</option>
+          <option value="other" {?location.other}selected{/location.other}>Other</option>
+        </select>
+        <input type="text" name="location_detail" value="{location_detail}"/>
+        <h3>Notes</h3>
+        <textarea name="comments" cols="35" rows="7">{comments}</textarea>
+        {#config}
+        <h3>Configuration</h3>
+        <table>
+          <tr>
+            <th>SNO</th>
+            <th>SNO+</th>
+          </tr>
+          <tr>
+            <td>
+              {#sno}
+              <dl>
+                <dt style="height:3em">Crate ID: <a href="{baseURL}/crate?startkey=[{crate}]&endkey=[{crate},{}]">{crate}</a></dt>
+                <dt style="height:3em">Slot: <a href="{baseURL}/slot?startkey=[{&#34;crate&#34;:{crate},&#34;slot&#34;:{slot}}]&endkey=[{&#34;crate&#34;:{crate},&#34;slot&#34;:{slot}},{}]">{slot}</a></dt>
+                <dt style="height:3em">FEC ID: <a href="{baseURL}/fec?startkey=[&#34;{fec_id}&#34;]&endkey=[&#34;{fec_id}&#34;,{}]">{fec_id}</a></dt>
+                <dt style="height:3em">PMTIC: {pmtic}</dt>
+                <dt>Daughterboards</dt>
+                <dd>
+                <ul>
+                  {#db}
+                  <li style="height:3em"><a href="{baseURL}/db?startkey=[&#34;{db_id}&#34;]&endkey=[&#34;{db_id}&#34;,{}]">{db_id}</a></li>
+                  {/db}
+                </ul>
+                </dd>
+              </dl>
+              {/sno}
+            </td>
+            <td>
+              {#snoplus}
+              <dl>
+                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/></dt>
+                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/></dt>
+                <dt style="height:3em">FEC ID: <input type="text" size="5" name="config_snoplus_fec_id" value="{fec_id}"/></dt>
+                <dt style="height:3em">PMTIC: <input type="text" size="5" name="config_snoplus_pmtic" value="{pmtic}"/></dt>
+                <dt>Daughterboards</dt>
+                <dd>
+                <ul>
+                  {#db}
+                  <li style="height:3em"><input type="text" size="5" name="config_snoplus_db_{slot}" value="{db_id}"/></li>
+                  {/db}
+                </ul>
+                </dd>
+              </dl>
+              {/snoplus}
+            </td>
+          </tr>
+        </table>
+        {/config}
+      </form>
+      {/board}
+    </div>
+    <div style="display:table-cell;width:33%;">
+      <h1>Status Tags</h1>
+      <h4>Current debugging status: {tag_status}</h4>
+      <a href="{baseURL}/tag/new?board=&#034;{#board}{_id}{/board}&#034;">Create New Tag</a>
+      {?tags}
+      <table>
+        {#tags}
+        <tr>
+          <td>
+            <table style="border:none;background:#eee;">
+              <tr><td>{created}</td></tr>
+              <tr><td>Author: {author}</td></tr>
+              <tr><td>Status: {status}</td></tr>
+              <tr><td>FEC: {setup.mb}</td></tr>
+              <tr><td>DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}</td></tr>
+              <tr><td>{content}</td></tr>
+              <tr><td><a href="{baseURL}/tags/{_id}" style="font-size:7pt">{_id}</a></td></tr>
+            </table>
+          </td>
+        </tr>
+        {/tags}
+      </table>
+      {:else}
+      <strong>No tags</strong>
+      {/tags}
+    </div>
+    <div style="display:table-cell;width:33%;">
+      <h1>Test Results</h1>
+      <h3>Final Tests</h3>
+      {?final_tests}
+      <table>
+        <tr>
+          <th>Status</th>
+          <th>Type</th>
+          <th>Date</th>
+        </tr>
+        {#final_tests}
+        <tr>
+          <td>
+            {?pass}
+            <span title="Passed" style="display:inline-block;width:12px;background:green">&nbsp;</span>
+            {:else}
+            <span title="Failed" style="display:inline-block;width:12px;background:red">&nbsp;</span>
+            {/pass}
+          </td>
+          <td><a href="{baseURL}/final_test/{id}">final_test</a></td>
+          <td>{created}</td>
+        </tr>
+        {/final_tests}
+      </table>
+      {:else}
+      <strong>No final tests</strong>
+      {/final_tests}
+      <h3>ECALs</h3>
+      {?ecals}
+      <table>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Type</th>
+          <th>Crates</th>
+          <th>Date</th>
+        </tr>
+        {#ecals}
+        <tr{#value.archived} class="archived"{/value.archived}>
+          <td>
+            {#archived}
+            <div class="ui-icon ui-icon-folder-open"></div>
+            {:else}
+            <div class="ui-icon ui-icon-folder-collapsed"></div>
+            {/archived}
+          </td>
+          <td><a href="{baseURL}/ecal/{id}">ecal</a></td>
+          <td>
+            {#config}
+            <li><a href="{baseURL}/crate?startkey=[{crate_id}]&endkey=[{crate_id},{}]">{crate_id}</a> (0x{mask})</li>
+            {/config}
+          </td>
+          <td>{created}</td>
+        </tr>
+        {/ecals}
+      </table>
+      {:else}
+      <strong>No ECALs</strong>
+      {/ecals}
+      <h3>FEC Documents</h3>
+      {?fec_docs}
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Date</th>
+        </tr>
+        {#fec_docs}
+        <tr>
+          <td><a href="#" onclick="window.location.href='/debugdb/{id}'">FEC</a></td>
+          <td>{created}</td>
+        </tr>
+        {/fec_docs}
+      </table>
+      {:else}
+      <strong>No FEC documents</strong>
+      {/fec_docs}
+    </div>
+  </div>
+</div>
+
