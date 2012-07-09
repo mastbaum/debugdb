@@ -1,48 +1,18 @@
 <h1>Crate {crate_id}</h1>
 
-{!
-<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
-  <div style="display:table-row">
-    <div style="display:table-cell">
-      <h1 style="color:black;"><a href="{baseURL}/ecals">ECAL</a></h1>
-      <h3 style="color:black;margin-top:-6px">{created}</h3>
-    </div>
-    <div style="table-cell">
-      {#value.archived}
-      {:else}
-      <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
-      {/value.archived}
-    </div>
-  </div>
-</div>
-
-{#archived}
-<h4>This test is archived. <a href="{baseURL}/test_unarchive/{_id}">Unarchive</a></h4>
-{/archived}
-
-{?bad_tests}
-<h3>Warning: Corrupted tests</h3>
-<table>
-  <tr>
-    <td>
-      <div class="ui-icon ui-icon-alert"></div>
-    </td>
-    <td>
-        {#bad_test_list}
-        <li>ID: "{test_id}"</li>
-        {/bad_test_list}
-    </td>
-  </tr>
-</table>
-{/bad_tests}
-!}
+<style>
+  .none   { background:  white; color: black; }
+  .gold   { background:   gold; color: black; }
+  .silver { background: silver; color: black; }
+  .bad    { background:   pink; color: black; }
+  .bone   { background:  black; color: white; }
+</style>
 
 {#boards}
-<table>
+<table style="white-space:nowrap">
   <tr>
-    <td rowspan="2">
-      CTC
-      {#ctc}
+    <td rowspan="2" style="border:solid 5px black;">
+      CTC {#ctc}
       <a href="/board/{id}">{id}</a>
       {/ctc}
     </td>
@@ -50,13 +20,16 @@
     <td>
       FEC
       {#fec}
+      {idx}
+      <br/>
       <a href="/board/{id}">{id}</a>
       {/fec}
-      <table>
+      <table style="border:solid 1px black">
         {#dbs}
         <tr>
-          <td>
-            DB
+          <td style="border-bottom:solid 1px black;" class="{status}">
+            DB {idx}
+            <br/>
             <a href="/board/{id}">{id}</a>
           </td>
         </tr>
@@ -64,7 +37,7 @@
       </table>
     </td>
     {/fecs}
-    <td rowspan="2">
+    <td rowspan="2" style="border:solid 5px red;">
       XL3
       {#xl3}
       <a href="/board/{id}">{id}</a>
