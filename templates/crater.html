@@ -6,33 +6,38 @@
   .silver { background: silver; color: black; }
   .bad { background: #f66; color: black; }
   .bone { background: black; color: white; }
+  img.tag {width: 35px; margin-top: 2px; margin-bottom: 2px; }
 </style>
 
 {#boards}
-<table style="white-space:nowrap">
+<table style="white-space:nowrap;text-align:center;">
   <tr>
     {#ctc}
     <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
       <div style="background:black;color:white;font-weight:bold;padding:5px">
-        <div style="font-weight:bold;text-align:center;">CTC</div>
-        <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
+        <div style="font-weight:bold;">CTC</div>
+        <div><a href="{baseURL}/board/{id}">{id}</a></div>
+        <div>{?location}@{location}{/location}</div>
+        <img class="tag" src="{baseURL}/static/images/{tag}">
       </div>
-      {?location}@{location}{/location}
     </td>
     {/ctc}
     {#fecs}
     {#fec}
     <td style="border:solid 5px black;" class="{status}">
-      <div style="font-weight:bold;text-align:center;">FEC {idx}</div>
-      <div style="text-align:center"><a href="{baseURL}/board/{id}">{id}</a></div>
+      <div style="font-weight:bold">FEC {idx}</div>
+      <div><a href="{baseURL}/board/{id}">{id}</a></div>
+      <div>{?location}@{location}{/location}</div>
+      <img class="tag" src="{baseURL}/static/images/{tag}">
       {/fec}
-      <table style="border:solid 1px black">
+      <table style="border:solid 3px black">
         {#dbs}
         <tr>
           <td style="border-bottom:solid 1px black;" class="{status}">
-            <div style="font-weight:bold;text-align:center;">DB</div>
-            <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
-            {?location}@{location}{/location}
+            <div style="font-weight:bold">DB</div>
+            <div><a href="{baseURL}/board/{id}">{id}</a></div>
+            <div>{?location}@{location}{/location}</div>
+            <img class="tag" src="{baseURL}/static/images/{tag}">
           </td>
         </tr>
         {/dbs}
@@ -42,9 +47,10 @@
     {#xl3}
     <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
       <div style="background:#c00;color:white;font-weight:bold;padding:5px">
-        <div style="font-weight:bold;text-align:center;">XL3</div>
-        <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
-        {?location}@{location}{/location}
+        <div style="font-weight:bold;">XL3</div>
+        <div><a href="{baseURL}/board/{id}">{id}</a></div>
+        <div>{?location}@{location}{/location}</div>
+        <img class="tag" src="{baseURL}/static/images/{tag}">
       </div>
       <div style="margin:5px;">&nbsp;</div>
     </td>
@@ -53,9 +59,10 @@
   <tr>
     {#pmtics}
     <td style="border:solid 5px black;" class="{status}">
-      <div style="font-weight:bold;text-align:center;">PMTIC</div>
-      <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
-      {?location}@{location}{/location}
+      <div style="font-weight:bold">PMTIC</div>
+      <div><a href="{baseURL}/board/{id}">{id}</a></div>
+      <div>{?location}@{location}{/location}</div>
+      <img class="tag" src="{baseURL}/static/images/{tag}">
     </td>
     {/pmtics}
   </tr>
