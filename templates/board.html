@@ -56,8 +56,8 @@
             <td>
               {#sno}
               <dl>
-                <dt style="height:3em">Crate ID: <a href="{baseURL}/crate?startkey=[{crate}]&endkey=[{crate},{}]">{crate}</a></dt>
-                <dt style="height:3em">Slot: <a href="{baseURL}/slot?startkey=[{&#34;crate&#34;:{crate},&#34;slot&#34;:{slot}}]&endkey=[{&#34;crate&#34;:{crate},&#34;slot&#34;:{slot}},{}]">{slot}</a></dt>
+                <dt style="height:3em">Crate ID: <a href="{baseURL}/crater/{crate}">{crate}</a></dt>
+                <dt style="height:3em">Slot: <a href="{baseURL}/crater/{crate}">{slot}</a></dt>
                 <dt style="height:3em">FEC ID: <a href="{baseURL}/board/{fec_id}">{fec_id}</a></dt>
                 <dt style="height:3em">PMTIC: <a href="{baseURL}/board/{pmtic}">{pmtic}</a></dt>
                 <dt>Daughterboards</dt>
@@ -123,6 +123,11 @@
     </div>
     <div style="display:table-cell;width:33%;">
       <h1>Test Results</h1>
+      {#board}
+      {?board_type_short}
+      <h3><a href="{baseURL}/{board_type_short}?startkey=[&#034;{_id}&#034;]&endkey=[&#034;{_id}&#034;,{}]">All tests</a></h3>
+      {/board_type_short}
+      {/board}
       <h3>Final Tests</h3>
       {?final_tests}
       <table>
