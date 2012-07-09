@@ -4,7 +4,7 @@
   .none   { background:  white; color: black; }
   .gold   { background:   gold; color: black; }
   .silver { background: silver; color: black; }
-  .bad    { background:   pink; color: black; }
+  .bad    { background:   #f66; color: black; }
   .bone   { background:  black; color: white; }
 </style>
 
@@ -12,45 +12,48 @@
 <table style="white-space:nowrap">
   <tr>
     {#ctc}
-    <td rowspan="2" style="border:solid 5px black;" class="{status}">
-      CTC
-      <a href="{baseURL}/board/{id}">{id}</a>
+    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+      <div style="background:black;color:white;font-weight:bold;padding:5px">
+        <div style="font-weight:bold;text-align:center;">CTC</div>
+        <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
+      </div>
+      <div style="margin:5px;">&nbsp;</div>
     </td>
     {/ctc}
     {#fecs}
     {#fec}
-    <td class="{status}">
-      FEC
-      {idx}
-      <br/>
-      <a href="{baseURL}/board/{id}">{id}</a>
+    <td style="border:solid 5px black;" class="{status}">
+      <div style="font-weight:bold;text-align:center;">FEC {idx}</div>
+      <div style="text-align:center"><a href="{baseURL}/board/{id}">{id}</a></div>
       {/fec}
       <table style="border:solid 1px black">
         {#dbs}
         <tr>
           <td style="border-bottom:solid 1px black;" class="{status}">
-            DB {idx}
-            <br/>
-            <a href="{baseURL}/board/{id}">{id}</a>
+            <div style="font-weight:bold;text-align:center;">DB</div>
+            <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
           </td>
         </tr>
         {/dbs}
       </table>
     </td>
     {/fecs}
-    <td rowspan="2" style="border:solid 5px red;">
-      XL3
-      {#xl3}
-      <a href="{baseURL}/board/{id}">{id}</a>
-      {/xl3}
+    {#xl3}
+    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+      <div style="background:#c00;color:white;font-weight:bold;padding:5px">
+        <div style="font-weight:bold;text-align:center;">XL3</div>
+        <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
+      </div>
+      <div style="margin:5px;">&nbsp;</div>
     </td>
+    {/xl3}
   </tr>
   <tr>
     {#pmtics}
-    <td class="{status}">
-      PMTIC
-      <a href="{baseURL}/board/{id}">{id}</a>
-     </td>
+    <td style="border:solid 5px black;" class="{status}">
+      <div style="font-weight:bold;text-align:center;">PMTIC</div>
+      <div style="text-align:center;"><a href="{baseURL}/board/{id}">{id}</a></div>
+    </td>
     {/pmtics}
   </tr>
 </table>
