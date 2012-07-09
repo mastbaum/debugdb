@@ -1,0 +1,15 @@
+<h1>All boards</h1>
+ <table>
+  <tr>
+   <th>Board ID</th>
+   <th>Location</th>
+   <th>Current Status</th>
+  </tr>
+ {#rows}
+  <tr>
+    <td><a href="{baseURL}/board/{id}">{id}</a></td>
+   <td style="text-align:center">{location}</td>
+   <td style="text-align:center">{status|s}</td>
+ {/rows}
+ </table>
+
