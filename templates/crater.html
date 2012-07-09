@@ -11,18 +11,19 @@
 {#boards}
 <table style="white-space:nowrap">
   <tr>
-    <td rowspan="2" style="border:solid 5px black;">
-      CTC {#ctc}
-      <a href="/board/{id}">{id}</a>
-      {/ctc}
+    {#ctc}
+    <td rowspan="2" style="border:solid 5px black;" class="{status}">
+      CTC
+      <a href="{baseURL}/board/{id}">{id}</a>
     </td>
+    {/ctc}
     {#fecs}
-    <td>
+    {#fec}
+    <td class="{status}">
       FEC
-      {#fec}
       {idx}
       <br/>
-      <a href="/board/{id}">{id}</a>
+      <a href="{baseURL}/board/{id}">{id}</a>
       {/fec}
       <table style="border:solid 1px black">
         {#dbs}
@@ -30,7 +31,7 @@
           <td style="border-bottom:solid 1px black;" class="{status}">
             DB {idx}
             <br/>
-            <a href="/board/{id}">{id}</a>
+            <a href="{baseURL}/board/{id}">{id}</a>
           </td>
         </tr>
         {/dbs}
@@ -40,15 +41,15 @@
     <td rowspan="2" style="border:solid 5px red;">
       XL3
       {#xl3}
-      <a href="/board/{id}">{id}</a>
+      <a href="{baseURL}/board/{id}">{id}</a>
       {/xl3}
     </td>
   </tr>
   <tr>
     {#pmtics}
-    <td>
+    <td class="{status}">
       PMTIC
-      <a href="/board/{id}">{id}</a>
+      <a href="{baseURL}/board/{id}">{id}</a>
      </td>
     {/pmtics}
   </tr>
