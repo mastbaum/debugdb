@@ -5,14 +5,14 @@
 <h3>Configuration</h3>
 <dl>
  <dt>Location: {config.loc}</dt>
- <dt>Crate ID: <a href="{baseURL}/crate?startkey=[{config.crate_id}]&endkey=[{config.crate_id},{}]">{config.crate_id}</a></dt>
- <dt>Slot: <a href="{baseURL}/slot?startkey=[{&#34;crate&#34;:{config.crate_id},&#34;slot&#34;:{config.slot}}]&endkey=[{&#34;crate&#34;:{config.crate_id},&#34;slot&#34;:{config.slot}},{}]">{config.slot}</a></dt>
- <dt>FEC ID: <a href="{baseURL}/fec?startkey=[&#34;{config.fec_id}&#34;]&endkey=[&#34;{config.fec_id}&#34;,{}]">{config.fec_id}</a></dt>
+ <dt>Crate ID: <a href="{baseURL}/crate/{config.crate_id}">{config.crate_id}</a></dt>
+ <dt>Slot: <a href="{baseURL}/crate/{config.crate_id}">{config.slot}</a></dt>
+ <dt>FEC ID: <a href="{baseURL}/board/{config.fec_id}">{config.fec_id}</a></dt>
  <dt>Daughterboards</dt>
   <dd>
    <ul>
     {#config.db}
-    <li><a href="{baseURL}/db?startkey=[&#34;{db_id}&#34;]&endkey=[&#34;{db_id}&#34;,{}]">{db_id}</a></li>
+    <li><a href="{baseURL}/board/{db_id}">{db_id}</a></li>
     {/config.db}
    </ul>
   </dd>
