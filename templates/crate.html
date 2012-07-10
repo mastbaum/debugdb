@@ -1,0 +1,71 @@
+<h1><a href="{baseURL}/crates">&#171;</a> Crate {crate_id}</h1>
+
+<style>
+  .none { background: white; color: black; }
+  .gold { background: #ffdd00; color: black; }
+  .silver { background: silver; color: black; }
+  .bad { background: #f66; color: black; }
+  .bone { background: black; color: white; }
+  img.tag {width: 35px; margin-top: 2px; margin-bottom: 2px; }
+</style>
+
+{#boards}
+<table style="white-space:nowrap;text-align:center;">
+  <tr>
+    {#ctc}
+    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+      <div style="background:black;color:white;font-weight:bold;padding:5px">
+        <div style="font-weight:bold;">CTC</div>
+        <div><a href="{baseURL}/board/{id}">{id}</a></div>
+        <div>{?location}@{location}{/location}</div>
+        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+      </div>
+    </td>
+    {/ctc}
+    {#fecs}
+    {#fec}
+    <td style="border:solid 5px black;" class="{status}">
+      <div style="font-weight:bold">FEC {slot}</div>
+      <div><a href="{baseURL}/board/{id}">{id}</a></div>
+      <div>{?location}@{location}{/location}</div>
+      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+      {/fec}
+      <table style="border:solid 3px black">
+        {#dbs}
+        <tr>
+          <td style="border-bottom:solid 1px black;" class="{status}">
+            <div style="font-weight:bold">DB {slot}</div>
+            <div><a href="{baseURL}/board/{id}">{id}</a></div>
+            <div>{?location}@{location}{/location}</div>
+            <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+          </td>
+        </tr>
+        {/dbs}
+      </table>
+    </td>
+    {/fecs}
+    {#xl3}
+    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+      <div style="background:#c00;color:white;font-weight:bold;padding:5px">
+        <div style="font-weight:bold;">XL3</div>
+        <div><a href="{baseURL}/board/{id}">{id}</a></div>
+        <div>{?location}@{location}{/location}</div>
+        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+      </div>
+      <div style="margin:5px;">&nbsp;</div>
+    </td>
+    {/xl3}
+  </tr>
+  <tr>
+    {#pmtics}
+    <td style="border:solid 5px black;" class="{status}">
+      <div style="font-weight:bold">PMTIC {slot}</div>
+      <div><a href="{baseURL}/board/{id}">{id}</a></div>
+      <div>{?location}@{location}{/location}</div>
+      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+    </td>
+    {/pmtics}
+  </tr>
+</table>
+{/boards}
+
