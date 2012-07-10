@@ -102,7 +102,7 @@
     <div style="display:table-cell;width:33%;">
       <h1>Status Tags</h1>
       <h4>Current debugging status: {tag_status}</h4>
-      <a href="{baseURL}/tag/new?board=&#034;{#board}{_id}{/board}&#034;">Create New Tag</a>
+      <a href="{baseURL}/tag/{board._id}">Create/Edit Tags</a>
       {?tags}
       <table>
         {#tags}
@@ -115,14 +115,13 @@
               <tr><td>FEC: {setup.mb}</td></tr>
               <tr><td>DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}</td></tr>
               <tr><td>{content}</td></tr>
-              <tr><td><a href="{baseURL}/tags/{_id}" style="font-size:7pt">{_id}</a></td></tr>
             </table>
           </td>
         </tr>
         {/tags}
       </table>
       {:else}
-      <strong>No tags</strong>
+      <br/><br/><strong>No tags</strong>
       {/tags}
     </div>
     <div style="display:table-cell;width:33%;">
