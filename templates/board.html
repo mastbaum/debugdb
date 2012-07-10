@@ -49,10 +49,11 @@
         <h3>Configuration</h3>
         <table>
           <tr>
-            <th>SNO</th>
-            <th>SNO+</th>
+            {?sno}<th>SNO</th>{/sno}
+            {?snoplus}<th>SNO+</th>{/snoplus}
           </tr>
           <tr>
+            {?sno}
             <td>
               {#sno}
               <dl>
@@ -71,24 +72,27 @@
               </dl>
               {/sno}
             </td>
+            {/sno}
+            {?snoplus}
             <td>
               {#snoplus}
               <dl>
-                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/></dt>
-                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/></dt>
-                <dt style="height:3em">FEC ID: <input type="text" size="5" name="config_snoplus_fec_id" value="{fec_id}"/></dt>
-                <dt style="height:3em">PMTIC: <input type="text" size="5" name="config_snoplus_pmtic" value="{pmtic}"/></dt>
+                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/> <a href="{baseURL}/crater/{crate}">&#187;</a></dt>
+                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/> <a href="{baseURL}/crater/{crate}">&#187;</a></dt>
+                <dt style="height:3em">FEC ID: <input type="text" size="5" name="config_snoplus_fec_id" value="{fec_id}"/> <a href="{baseURL}/board/{fec_id}">&#187;</a></dt>
+                <dt style="height:3em">PMTIC: <input type="text" size="5" name="config_snoplus_pmtic" value="{pmtic}"/> <a href="{baseURL}/board/{pmtic}">&#187;</a></dt>
                 <dt>Daughterboards</dt>
                 <dd>
                 <ul>
                   {#db}
-                  <li style="height:3em"><input type="text" size="5" name="config_snoplus_db_{slot}" value="{db_id}"/></li>
+                  <li style="height:3em"><input type="text" size="5" name="config_snoplus_db_{slot}" value="{db_id}"/> <a href="{baseURL}/board/{db_id}">&#187;</a></li>
                   {/db}
                 </ul>
                 </dd>
               </dl>
               {/snoplus}
             </td>
+            {/snoplus}
           </tr>
         </table>
         {/config}
