@@ -18,7 +18,7 @@
         <div style="font-weight:bold;">CTC</div>
         <div><a href="{baseURL}/board/{id}">{id}</a></div>
         <div>{?location}@{location}{/location}</div>
-        <img class="tag" src="{baseURL}/static/images/tag_blank.png">
+        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
       </div>
     </td>
     {/ctc}
@@ -28,7 +28,7 @@
       <div style="font-weight:bold">FEC {slot}</div>
       <div><a href="{baseURL}/board/{id}">{id}</a></div>
       <div>{?location}@{location}{/location}</div>
-      <img class="tag" src="{baseURL}/static/images/tag_blank.png">
+      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
       {/fec}
       <table style="border:solid 3px black">
         {#dbs}
@@ -37,7 +37,7 @@
             <div style="font-weight:bold">DB {slot}</div>
             <div><a href="{baseURL}/board/{id}">{id}</a></div>
             <div>{?location}@{location}{/location}</div>
-            <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
+            <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
           </td>
         </tr>
         {/dbs}
@@ -50,7 +50,7 @@
         <div style="font-weight:bold;">XL3</div>
         <div><a href="{baseURL}/board/{id}">{id}</a></div>
         <div>{?location}@{location}{/location}</div>
-        <img class="tag" src="{baseURL}/static/images/tag_blank.png">
+        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
       </div>
       <div style="margin:5px;">&nbsp;</div>
     </td>
@@ -62,7 +62,7 @@
       <div style="font-weight:bold">PMTIC {slot}</div>
       <div><a href="{baseURL}/board/{id}">{id}</a></div>
       <div>{?location}@{location}{/location}</div>
-      <img class="tag" src="{baseURL}/static/images/tag_blank.png">
+      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
     </td>
     {/pmtics}
   </tr>
