@@ -11,7 +11,7 @@
       {/status}
     </div>
     <div style="display:table-cell;vertical-align:middle">
-      <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">{_id}</a></h1>
+      <h1 style="color:black;">{_id}</h1>
       <h3 style="color:black;margin-top:-6px">{board_type}</h3>
     </div>
     {/board}
@@ -57,8 +57,8 @@
             <td>
               {#sno}
               <dl>
-                <dt style="height:3em">Crate ID: <a href="{baseURL}/crater/{crate}">{crate}</a></dt>
-                <dt style="height:3em">Slot: <a href="{baseURL}/crater/{crate}">{slot}</a></dt>
+                <dt style="height:3em">Crate ID: <a href="{baseURL}/crate/{crate}">{crate}</a></dt>
+                <dt style="height:3em">Slot: <a href="{baseURL}/crate/{crate}">{slot}</a></dt>
                 <dt style="height:3em">FEC ID: <a href="{baseURL}/board/{fec_id}">{fec_id}</a></dt>
                 <dt style="height:3em">PMTIC: <a href="{baseURL}/board/{pmtic}">{pmtic}</a></dt>
                 <dt>Daughterboards</dt>
@@ -77,8 +77,8 @@
             <td>
               {#snoplus}
               <dl>
-                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/> <a href="{baseURL}/crater/{crate}">&#187;</a></dt>
-                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/> <a href="{baseURL}/crater/{crate}">&#187;</a></dt>
+                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/> <a href="{baseURL}/crate/{crate}">&#187;</a></dt>
+                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/> <a href="{baseURL}/crate/{crate}">&#187;</a></dt>
                 <dt style="height:3em">FEC ID: <input type="text" size="5" name="config_snoplus_fec_id" value="{fec_id}"/> <a href="{baseURL}/board/{fec_id}">&#187;</a></dt>
                 <dt style="height:3em">PMTIC: <input type="text" size="5" name="config_snoplus_pmtic" value="{pmtic}"/> <a href="{baseURL}/board/{pmtic}">&#187;</a></dt>
                 <dt>Daughterboards</dt>
