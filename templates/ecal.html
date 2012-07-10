@@ -127,19 +127,19 @@
   {#crates}
   <tr style="border:solid 1px #eee">
     <th style="text-align:center;border-right:solid 1px #eee">
-      <a href="{baseURL}/crate?startkey=[{crate_id}]&endkey=[{crate_id},{}]">{crate_id}</a>
+      <a href="{baseURL}/crate/{crate_id}">{crate_id}</a>
       <br><span style="font-size:smaller">(0x{slot_mask})</span></th>
     {#slots crate_id=crate_id}
     <td style="border-right:solid 1px #eee;{#enabled}{:else}background:#eee{/enabled}">
       <table>
         <tr>
           <th>Slot</th>
-          <td><a href="{baseURL}/slot?startkey=[{&#34;crate&#34;:{crate_id},&#34;slot&#34;:{slot_id}}]&endkey=[{&#34;crate&#34;:{crate_id},&#34;slot&#34;:{slot_id}},{}]">{slot_id}</a></td>
+          <td><a href="{baseURL}/crate/{crate_id}">{slot_id}</a></td>
         </tr>
         <tr>
           {#mb_id}
           <th>FEC</th>
-          <td><a href="{baseURL}/fec?startkey=[&#34;{mb_id}&#34;]&endkey=[&#34;{mb_id}&#34;,{}]">{mb_id}</a></td>
+          <td><a href="{baseURL}/board/{mb_id}">{mb_id}</a></td>
           {/mb_id}
         </tr>
         <tr>
@@ -147,10 +147,10 @@
           <th style="border-bottom:none;">DBs</th>
           <td style="border-bottom:none;">
             <ol>
-              <li><a href="{baseURL}/db?startkey=[&#34;{db0_id}&#34;]&endkey=[&#34;{db0_id}&#34;,{}]">{db0_id}</a></li>
-              <li><a href="{baseURL}/db?startkey=[&#34;{db1_id}&#34;]&endkey=[&#34;{db1_id}&#34;,{}]">{db1_id}</a></li>
-              <li><a href="{baseURL}/db?startkey=[&#34;{db2_id}&#34;]&endkey=[&#34;{db2_id}&#34;,{}]">{db2_id}</a></li>
-              <li><a href="{baseURL}/db?startkey=[&#34;{db3_id}&#34;]&endkey=[&#34;{db3_id}&#34;,{}]">{db3_id}</a></li>
+              <li><a href="{baseURL}/board/{db0_id}">{db0_id}</a></li>
+              <li><a href="{baseURL}/board/{db1_id}">{db1_id}</a></li>
+              <li><a href="{baseURL}/board/{db2_id}">{db2_id}</a></li>
+              <li><a href="{baseURL}/board/{db3_id}">{db3_id}</a></li>
             </ol>
           </td>
           {/db0_id}
