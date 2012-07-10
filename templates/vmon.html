@@ -14,9 +14,7 @@
   <div style="table-cell">
     {#archived}
     {:else}
-    <form action="" method="POST">
-      <button type="submit" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></button>
-    </form>
+    <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
     {/archived}
   </div>
  </div>
