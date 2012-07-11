@@ -31,6 +31,17 @@ ol.custom:first-child {
   counter-reset: customlistcounter;
 }
 
+div.meter {
+  display: inline-block;
+  color: #aaa;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+
 /*
     DJANGO Admin styles
 */

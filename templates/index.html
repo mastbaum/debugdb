@@ -1,57 +1,101 @@
 <div style="display:table;width:80%">
-<div style="display:table-row">
-<div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
-<h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/boards" style="text-decoration:underline;">Boards</a></h1>
-<h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/crates" style="text-decoration:underline;">Crates</a></h1>
-<h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/ecals" style="text-decoration:underline">ECALs</a></h1>
-<h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/logbook" style="text-decoration:underline">Debugging Log Book</a></h1>
-<a href="{baseURL}/fecs?group_level=1" style="text-decoration:underline;font-size:larger">All FECs</a><br/>
-<a href="{baseURL}/dbs?group_level=1" style="text-decoration:underline;font-size:larger">All Daughterboards</a><br/>
-<a href="{baseURL}/tests?group_level=1" style="text-decoration:underline;font-size:larger">All Tests</a><br/>
+  <div style="display:table-row">
+    <div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
+      <h1 style="margin-top:15px;margin-bottom:20px">
+        <a href="{baseURL}/boards" style="text-decoration:underline;">Boards</a><br/>
+        <input type="text" size="4" id="quick-board-id"/> <button id="quick-board-submit">&#187;</button>
+      </h1>
+      <h1 style="margin-top:15px;margin-bottom:20px">
+        <a href="{baseURL}/crates" style="text-decoration:underline;">Crates</a><br/>
+        <input type="text" size="4" id="quick-crate-id"/> <button id="quick-crate-submit">&#187;</button>
+      </h1>
+      <h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/ecals" style="text-decoration:underline">ECALs</a></h1>
+      <h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/logbook" style="text-decoration:underline">Debugging Log Book</a></h1>
+      <a href="{baseURL}/fecs?group_level=1" style="text-decoration:underline;font-size:larger">All FECs</a><br/>
+      <a href="{baseURL}/dbs?group_level=1" style="text-decoration:underline;font-size:larger">All Daughterboards</a><br/>
+      <a href="{baseURL}/tests?group_level=1" style="text-decoration:underline;font-size:larger">All Tests</a><br/>
+    </div>
+    <div style="width:50%;display:table-cell;text-align:center;border:dashed 1px #ccc;vertical-align:middle;padding-bottom:5px">
+      {?rows}
+      <h1 style="margin-top:10px">Recent Tests</h1>
+      <h3 style="margin-bottom:10px;margin-top:-6px;"><a href="{baseURL}/history">(view all)</a></h3>
+      <table align="center">
+        <tr>
+          <th>Type</th>
+          <th>Status</th>
+          <th style="text-align:center">Location</th>
+          <th>Date</th>
+        </tr>
+        {#rows}
+        <tr>
+          <td><a href="{baseURL}/{value.type}/{id}">{value.type}</a></td>
+          {#value.pass}
+          <td align="center"><span style="display:block;background:green;width:12px">&nbsp;</span></td>
+          {:else}
+          <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
+          {/value.pass}
+          <td>{value.config.loc}</td>
+          <td>{value.short_created}</td>
+        {/rows}
+        </tr>
+      </table>
+      {:else}
+      <h1>No tests found</h1>
+      {/rows}
+    </div>
+    <div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
+      <h1 style="margin-bottom:15px">Documentation</h1>
+      <ul style="text-align:left">
+        <li><a href="https://github.com/mastbaum/debugdb/wiki">Debugging Database Documentation</a></li>
+        <li><a href="http://nubar.hep.upenn.edu/snoplus/DAQ/">SNO+ DAQ Website</a></li>
+        <li><a href="{baseURL}/static/docs/penndaq_user_guide.pdf">penn_daq User's Guide [PDF]</a></li>
+        <li><a href="{baseURL}/static/docs/xl3_programmers_manual.pdf">XL3 Programmer's Manual [PDF]</a></li>
+        <li><a href="{baseURL}/static/docs/xilinx_commands.txt">Xilinx Command Reference [txt]</a></li>
+        <li><a href="{baseURL}/static/docs/turn_on_procedure.txt">XL3 Turn-on Procedure [txt]</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div style="width:50%;display:table-cell;text-align:center;border:dashed 1px #ccc;vertical-align:middle">
-{?rows}
-<h1 style="margin-top:10px">Recent Tests</h1>
-<h3 style="margin-bottom:10px;margin-top:-6px;"><a href="{baseURL}/history">(view all)</a></h3>
- <table align="center">
-  <tr>
-   <th>Type</th>
-   <th>Status</th>
-   <th style="text-align:center">Location</th>
-   <th>Date</th>
-  </tr>
- {#rows}
-  <tr>
-   <td><a href="{baseURL}/{value.type}/{id}">{value.type}</a></td>
-   {#value.pass}
-    <td align="center"><span style="display:block;background:green;width:12px">&nbsp;</span></td>
-   {:else}
-    <td align="center"><span style="display:block;background:red;width:12px">&nbsp;</span></td>
-   {/value.pass}
-   <td>{value.config.loc}</td>
-   <td>{value.short_created}</td>
- {/rows}
- </table>
-{:else}
- <h1>No tests found</h1>
-{/rows}
-</div>
-<div style="width:25%;display:table-cell;text-align:center;border:dashed 1px #ccc;">
-<h1 style="margin-bottom:15px">Documentation</h1>
-<ul style="text-align:left">
-<li><a href="https://github.com/mastbaum/debugdb/wiki">Debugging Database Documentation</a></li>
-<li><a href="http://nubar.hep.upenn.edu/snoplus/DAQ/">SNO+ DAQ Website</a></li>
-<li><a href="{baseURL}/static/docs/penndaq_user_guide.pdf">penn_daq User's Guide [PDF]</a></li>
-<li><a href="{baseURL}/static/docs/xl3_programmers_manual.pdf">XL3 Programmer's Manual [PDF]</a></li>
-<li><a href="{baseURL}/static/docs/xilinx_commands.txt">Xilinx Command Reference [txt]</a></li>
-<li><a href="{baseURL}/static/docs/turn_on_procedure.txt">XL3 Turn-on Procedure [txt]</a></li>
-</ul>
-</div>
-</div>
+
+<script>
+  $('#quick-board-submit').click(function(e) { window.location.href='{baseURL}/board/'+$('#quick-board-id').val(); })
+  $('#quick-crate-submit').click(function(e) { window.location.href='{baseURL}/crate/'+$('#quick-crate-id').val(); })
+</script>
+
+<div style="width:80%;text-align:center;border:dashed 1px #ccc;">
+  <table style="width:100%">
+    <tr>
+      <th>Board Status</th>
+      <td>
+        <table>
+          <tr>
+            <th>All</th>
+            <td style="vertical-align:middle;width:100%;"><div style="width:100%;white-space:nowrap;border:solid 1px #777;padding:0px;margin:0px"><div class="meter" id="board-status-gold" style="background:gold;" title="gold"></div><div class="meter" id="board-status-silver" style="background:silver" title="silver"></div><div class="meter" id="board-status-bad" style="background:red" title="bad"></div><div class="meter" id="board-status-unknown" style="width:99%;background:white" title="unknown"></div><div class="meter" id="board-status-bone" style="background:black" title="bone"></div></div></td>
+            <td style="vertical-align:middle;" id="board-status-total"></td>
+          </tr>
+          <tr>
+            <th>FECs</th>
+            <td style="vertical-align:middle;width:100%;"><div style="width:100%;white-space:nowrap;border:solid 1px #777;padding:0px;margin:0px"><div class="meter" id="fec-status-gold" style="background:gold;" title="gold"></div><div class="meter" id="fec-status-silver" style="background:silver" title="silver"></div><div class="meter" id="fec-status-bad" style="background:red" title="bad"></div><div class="meter" id="fec-status-unknown" style="width:99%;background:white" title="unknown"></div><div class="meter" id="fec-status-bone" style="background:black" title="bone"></div></div></td>
+            <td style="vertical-align:middle;" id="fec-status-total"></td>
+          </tr>
+          <tr>
+            <th>DBs</th>
+            <td style="vertical-align:middle;width:100%;"><div style="width:100%;white-space:nowrap;border:solid 1px #777;padding:0px;margin:0px"><div class="meter" id="db-status-gold" style="background:gold;" title="gold"></div><div class="meter" id="db-status-silver" style="background:silver" title="silver"></div><div class="meter" id="db-status-bad" style="background:red" title="bad"></div><div class="meter" id="db-status-unknown" style="width:99%;background:white" title="unknown"></div><div class="meter" id="db-status-bone" style="background:black" title="bone"></div></div></td>
+            <td style="vertical-align:middle;" id="db-status-total"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th>Board Locations</th>
+      <td style="vertical-align:middle;width:100%"><div style="padding:1px;width:100%;white-space:nowrap;border:solid 1px #777;padding:0px;margin:0px"><div class="meter" id="board-location-underground" style="background:brown" title="underground"></div><div class="meter" id="board-location-surface" style="background:#ddf" title="surface"></div><div class="meter" id="board-location-penn" style="background:#009" title="penn"></div><div class="meter" id="board-location-unknown" style="width:99%;background:white" title="unknown"></div></div></td>
+      <td style="vertical-align:middle;" id="board-location-total"></td>
+    </tr>
+  </table>
 </div>
 
 <div style="padding:10px;text-align:right;font-size:smaller;width:80%">
- Contact: <a href="mailto:mastbaum@hep.upenn.edu">mastbaum@hep.upenn.edu</a>
- <a href="#" onClick="egg()"><img align="right" style="padding-left:20px" border=0 src="{baseURL}/static/images/nu_tiny.png"></a>
+  Contact: <a href="mailto:mastbaum@hep.upenn.edu">mastbaum@hep.upenn.edu</a>
+  <a href="#" onClick="egg()"><img align="right" style="padding-left:20px" border=0 src="{baseURL}/static/images/nu_tiny.png"></a>
 </div>
 

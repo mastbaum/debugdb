@@ -112,8 +112,8 @@
               <tr><td style="border-bottom:none">{created}</td></tr>
               <tr><td style="border-bottom:none">Author: {author}</td></tr>
               <tr><td style="border-bottom:none">Status: {status}</td></tr>
-              <tr><td style="border-bottom:none">FEC: {setup.mb}</td></tr>
-              <tr><td style="border-bottom:none">DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}</td></tr>
+              {?setup.mb}<tr><td style="border-bottom:none">FEC: {setup.mb}</td></tr>{/setup.mb}
+              {?showdbs}<tr><td style="border-bottom:none">DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}</td></tr>{/showdbs}
               <tr><td style="border-bottom:none">{content}</td></tr>
             </table>
           </td>
