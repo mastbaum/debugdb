@@ -2,11 +2,7 @@
 <style>
   .archived {display:none}
 </style>
-<h1>All tests for {system_name} {system_id}</h1>
-{?isaboard}
-<a href="{baseURL}/tag/new?board={system_id}" style="font-size:large">Create a Tag</a><br>
-<a href="{baseURL}/tag?startkey=[{system_id}]&endkey=[{system_id},{}]" style="font-size:large">Tag List</a>
-{/isaboard}
+<h1>All tests for {system_name} {?isaboard}<a href="{baseURL}/board/{system_id}">{/isaboard}{system_id}{?isaboard}</a>{/isaboard}</h1>
 <div style="padding:10px;font-weight:bold;"><input type="checkbox" onclick="$('.archived').toggle()"/> Show archived tests</div>
 <table>
   <tr>
