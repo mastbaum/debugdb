@@ -1,26 +1,4 @@
-<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
- <div style="display:table-row">
-  <div style="display:table-cell;padding-right:15px;font-size:large;vertical-align:middle">
-   {#pass}
-    <span style="color:black;font-weight:normal;padding:3px;background:#90ee90;border:solid 1px black">Passed</span>
-   {:else}
-    <span style="font-weight:normal;padding:3px;background:pink;border:solid 1px black">Failed</span>
-   {/pass}
-  </div>
-  <div style="display:table-cell">
-   <h1 style="color:black;"><a href="{baseURL}/test?startkey=[&#34;{type}&#34;]&endkey=[&#34;{type}&#34;,{}]">Charge Injection Scan</a></h1>
-   <h3 style="color:black;margin-top:-6px">{created}</h3>
-  </div>
-  <div style="table-cell">
-    {#archived}
-    {:else}
-    <a href="{baseURL}/test_archive/{_id}" title="Archive"><span class="ui-icon ui-icon-folder-collapsed"></span></a>
-    {/archived}
-  </div>
- </div>
-</div>
-
-{>"config_header.html"/}
+{>"test_header.html"/}
 
 <h3 style="padding-bottom:5px">
  Summary:
