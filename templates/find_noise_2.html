@@ -1,0 +1,22 @@
+{>"test_header.html"/}
+
+<h3 style="padding-bottom:5px">
+ Results:&nbsp;
+</h3>
+<table style="text-align:center">
+ <tr>
+  <th>Channel</th>
+  <th>Zero Used</th>
+  <th>Noise Level</th>
+ </tr>
+ {#channels}
+ <tr>
+  <th style="text-align:right">{id}</th>
+  <td>{zero_used}</td>
+  <td>{noiseless}</td>
+ </tr>
+ {/channels}
+</table>
+
+{>"test_footer.html"/}
+
