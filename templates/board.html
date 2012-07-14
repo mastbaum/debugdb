@@ -1,3 +1,22 @@
+<style>
+  .gold {
+    background: gold;
+  }
+  .silver {
+    background: silver;
+  }
+  .bad {
+    background: red;
+  }
+  .bone {
+    background: black;
+  }
+  .none {
+    background: white;
+    border: dashed 1px #aaa;
+  }
+</style>
+
 <div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
   <div style="display:table-row">
     {#board}
@@ -102,19 +121,36 @@
     <div style="display:table-cell;width:33%;">
       <h1>Status Tags</h1>
       <h4>Current debugging status: {tag_status}</h4>
-      <a href="{baseURL}/tag/{board._id}">Create/Edit Tags</a>
+      <a href="{baseURL}/tag/new?board={#board}{_id}{/board}">New Tag</a>
       {?tags}
       <table>
         {#tags}
         <tr>
-          <td>
-            <table style="border:solid 1px #999;width:70%;">
-              <tr><td style="border-bottom:none">{created}</td></tr>
-              <tr><td style="border-bottom:none">Author: {author}</td></tr>
-              <tr><td style="border-bottom:none">Status: {status}</td></tr>
-              {?setup.mb}<tr><td style="border-bottom:none">FEC: {setup.mb}</td></tr>{/setup.mb}
-              {?showdbs}<tr><td style="border-bottom:none">DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}</td></tr>{/showdbs}
-              <tr><td style="border-bottom:none">{content}</td></tr>
+          <td style="border-bottom:none;">
+            <table style="width:70%;">
+              <tr>
+                <td rowspan="3" style="width" class="status {status}" title="{status}">&nbsp;</td>
+                <td>
+                  {content}
+                  {?setup.mb}<br/>FEC: {setup.mb}{/setup.mb}
+                  {?showdbs}<br/>DBs: {setup.db0}, {setup.db1}, {setup.db2}, {setup.db3}{/showdbs}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  - {author} ({created})
+                    <span style="display:inline-block" class="ui-icon ui-icon-document" title="{_id}" onclick="window.prompt('Tag document', '{_id}');"></span>
+                    <a href="#confirm-delete-{_id}" class="boxy" title="Delete Tag">
+                      <span style="display:inline-block" class="ui-icon ui-icon-trash" title="Delete Tag"></span>
+                    </a>
+                  <div id="confirm-delete-{_id}" style="display:none;color:black;padding:15px">
+                    Really delete tag {_id}?<br/><br/>
+                    <div style="width:100%;text-align:center">
+                      <a href="{baseURL}/tag_delete/{_id}" onClick="Boxy.get(this).hide()">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
             </table>
           </td>
         </tr>
@@ -128,7 +164,7 @@
       <h1>Test Results</h1>
       {#board}
       {?board_type_short}
-      <h3><a href="{baseURL}/{board_type_short}?startkey=[&#034;{_id}&#034;]&endkey=[&#034;{_id}&#034;,{}]">All tests</a></h3>
+      <h3><a href="{baseURL}/{board_type_short}/{_id}">All tests</a></h3>
       {/board_type_short}
       {/board}
       <h3>Final Tests</h3>
@@ -207,4 +243,10 @@
     </div>
   </div>
 </div>
+
+<script type='text/javascript'> 
+$(function() {
+  $('.boxy').boxy();
+});
+</script>
 
