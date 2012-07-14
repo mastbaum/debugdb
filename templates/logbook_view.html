@@ -49,7 +49,7 @@
         var tn = test_names[i];
         mention_links.push({
           name: 'Test ' + tn,
-          url: baseURL + '/test?startkey=[%22' + tn + '%22]&endkey=[%22' + tn + '%22,{}]'
+          url: baseURL + '/test/' + tn
         });
         matched = true;
         break;
@@ -59,20 +59,23 @@
 
     // fec
     if (s.substring(idx+1, idx+2).toLowerCase() == "f" || s.substring(idx+1, idx+2).toLowerCase() == "m") {
-      var fid = s.substring(idx+1, idx+5);
+      var fid = s.substring(idx+1, idx+5).toLowerCase();
+      if (fid.substr(0,1) == 'm') {
+        fid = 'f' + fid.substring(1, fid.length);
+      }
       mention_links.push({
         name: 'FEC ' + fid,
-        url: baseURL + '/fec?startkey=[%22' + fid + '%22]&endkey=[%22' + fid + '%22,{}]'
+        url: baseURL + '/board/' + fid
       });
       continue;
     }
 
     // db
     if (s.substring(idx+1, idx+2).toLowerCase() == "d") {
-      var dbid = s.substring(idx+1, idx+5);
+      var dbid = s.substring(idx+1, idx+5).toLowerCase();
       mention_links.push({
         name: 'DB ' + dbid,
-        url: baseURL + '/db?startkey=[%22' + dbid + '%22]&endkey=[%22' + dbid + '%22,{}]'
+        url: baseURL + '/board/' + dbid
       });
       continue;
     }
