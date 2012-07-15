@@ -62,6 +62,12 @@
           <option value="other" {?location.other}selected{/location.other}>Other</option>
         </select>
         <input type="text" name="location_detail" value="{location_detail}"/>
+        {?channels}
+        <h3>Channels</h3>
+        {#channels}
+        <input type="checkbox" name="channel{id}" {?good}checked{/good}/>&nbsp;
+        {/channels}
+        {/channels}
         <h3>Notes</h3>
         <textarea name="comments" cols="35" rows="7">{comments}</textarea>
         <h3>Configuration</h3>
