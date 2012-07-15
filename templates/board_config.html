@@ -1,0 +1,17 @@
+<dl>
+  <dt>Crate ID: <a href="{baseURL}/crate/{crate}">{crate}</a></dt>
+  {?slot}<dt>Slot: <a href="{baseURL}/crate/{crate}">{slot}</a></dt>{/slot}
+  {?fec}<dt>FEC ID: <a href="{baseURL}/board/{fec}">{fec}</a></dt>{/fec}
+  {?pmtic}<dt>PMTIC: <a href="{baseURL}/board/{pmtic}">{pmtic}</a></dt>{/pmtic}
+  {?dbs}
+  <dt>Daughterboards</dt>
+  <dd>
+  <ul>
+    {#dbs}
+    <li><a href="{baseURL}/board/{.}">{.}</a></li>
+    {/dbs}
+  </ul>
+  </dd>
+  {/dbs}
+</dl> 
+

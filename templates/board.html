@@ -64,57 +64,17 @@
         <input type="text" name="location_detail" value="{location_detail}"/>
         <h3>Notes</h3>
         <textarea name="comments" cols="35" rows="7">{comments}</textarea>
-        {#config}
         <h3>Configuration</h3>
         <table>
           <tr>
-            {?sno}<th>SNO</th>{/sno}
-            {?snoplus}<th>SNO+</th>{/snoplus}
+            <th>SNO</th>
+            <th>SNO+</th>
           </tr>
           <tr>
-            {?sno}
-            <td>
-              {#sno}
-              <dl>
-                <dt style="height:3em">Crate ID: <a href="{baseURL}/crate/{crate}">{crate}</a></dt>
-                <dt style="height:3em">Slot: <a href="{baseURL}/crate/{crate}">{slot}</a></dt>
-                <dt style="height:3em">FEC ID: <a href="{baseURL}/board/{fec_id}">{fec_id}</a></dt>
-                <dt style="height:3em">PMTIC: <a href="{baseURL}/board/{pmtic}">{pmtic}</a></dt>
-                <dt>Daughterboards</dt>
-                <dd>
-                <ul>
-                  {#db}
-                  <li style="height:3em"><a href="{baseURL}/board/{db_id}">{db_id}</a></li>
-                  {/db}
-                </ul>
-                </dd>
-              </dl>
-              {/sno}
-            </td>
-            {/sno}
-            {?snoplus}
-            <td>
-              {#snoplus}
-              <dl>
-                <dt style="height:3em">Crate ID: <input type="text" size="5" name="config_snoplus_crate" value="{crate}"/> <a href="{baseURL}/crate/{crate}">&#187;</a></dt>
-                <dt style="height:3em">Slot: <input type="text" size="5" name="config_snoplus_slot" value="{slot}"/> <a href="{baseURL}/crate/{crate}">&#187;</a></dt>
-                <dt style="height:3em">FEC ID: <input type="text" size="5" name="config_snoplus_fec_id" value="{fec_id}"/> <a href="{baseURL}/board/{fec_id}">&#187;</a></dt>
-                <dt style="height:3em">PMTIC: <input type="text" size="5" name="config_snoplus_pmtic" value="{pmtic}"/> <a href="{baseURL}/board/{pmtic}">&#187;</a></dt>
-                <dt>Daughterboards</dt>
-                <dd>
-                <ul>
-                  {#db}
-                  <li style="height:3em"><input type="text" size="5" name="config_snoplus_db_{slot}" value="{db_id}"/> <a href="{baseURL}/board/{db_id}">&#187;</a></li>
-                  {/db}
-                </ul>
-                </dd>
-              </dl>
-              {/snoplus}
-            </td>
-            {/snoplus}
+            <td id="config-sno"></td>
+            <td id="config-snoplus"></td>
           </tr>
         </table>
-        {/config}
       </form>
       {/board}
     </div>
