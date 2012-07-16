@@ -3,14 +3,18 @@
 <span style="font-size:7pt">Document ID: {_id} <a href="#confirm_delete" class="boxy" title="Delete">(delete)</a></span>
 
 <div id="confirm_delete" style="display:none;color:black;padding:15px">
-Really delete document {_id}?
-<br/><br/>
-<div style="width:100%;text-align:center"><a href="{baseURL}/test_delete/{_id}" onClick="Boxy.get(this).hide()">Delete</a></div>
+  Really delete document {_id}?
+  <br/><br/>
+  <div style="width:100%;text-align:center">
+    <form action="{baseURL}/test_delete/{_id}" method="POST">
+      <input type="submit" onClick="Boxy.get(this).hide()" value="Delete"/>
+    </form>
+  </div>
 </div>
 
-<script type='text/javascript'> 
-$(function() {
-  $('.boxy').boxy();
-});
+<script type="text/javascript">
+  $(function() {
+    $('.boxy').boxy();
+  });
 </script>
 
