@@ -10,73 +10,119 @@
 </style>
 
 <script>
-$(document).keydown(function(e) {
+  $(document).keydown(function(e) {
     if (e.which == 37 && {crate_id} > 0) {
         window.location.href = '{baseURL}/crate/' + String({crate_id} - 1);
     }
-    else if (e.which == 39 && {crate_id} < 19) {
+    else if (e.which == 39 && {crate_id} < 18) {
         window.location.href = '{baseURL}/crate/' + String({crate_id} + 1);
     }
 });
+
+function reconfig(board, loc) {
+    console.log(board);
+    console.log(loc);
+    var new_board = prompt('Enter new board ID');
+    console.log(new_board);
+    if (!new_board || new_board == '') {
+        return;
+    }
+
+    var form = $('<form></form>');
+    form.attr("method", "POST");
+    form.attr("action", "{baseURL}/reconfigure/configuration_snoplus");
+
+    $.each({old_board: board, new_board: new_board, dest: loc}, function(key, value) {
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", key);
+        field.attr("value", value);
+        form.append(field);
+    });
+
+    $(document.body).append(form);
+    form.submit();
+}
 </script>
 
-{#boards}
 <table style="white-space:nowrap;text-align:center;">
   <tr>
-    {#ctc}
-    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+    <td rowspan="2" style="border:solid 5px black;padding:0px">
       <div style="background:black;color:white;font-weight:bold;padding:5px">
-        <div style="font-weight:bold;">CTC</div>
-        <div><a href="{baseURL}/board/{id}">{id}</a></div>
-        <div>{?location}@{location}{/location}</div>
-        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+        <div style="font-weight:bold;">
+          CTC
+          <a onclick="reconfig('{.}', '{crate_id}');">
+            <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
+          </a>
+        </div>
+        {#ctc}
+        <div><a href="{baseURL}/board/{.}">{.}</a></div>
+        <div id="location-{.}">&nbsp;</div>
+        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_blank.png">
+        {/ctc}
       </div>
     </td>
-    {/ctc}
     {#fecs}
-    {#fec}
-    <td style="border:solid 5px black;" class="{status}">
-      <div style="font-weight:bold">FEC {slot}</div>
-      <div><a href="{baseURL}/board/{id}">{id}</a></div>
-      <div>{?location}@{location}{/location}</div>
-      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
-      {/fec}
+    <td style="border:solid 5px black;">
+      <div style="font-weight:bold">
+        FEC {slot}
+        <a onclick="reconfig('{id}', '{crate_id}/{slot}');">
+          <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
+        </a>
+      </div>
+      <div><a href="{baseURL}/board/{id}">{id}</a>&nbsp;</div>
+      <div id="location-{id}">&nbsp;</div>
+      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
       <table style="border:solid 3px black">
-        {#dbs}
+        {#dbs fec_slot=slot}
         <tr>
-          <td style="border-bottom:solid 1px black;" class="{status}">
-            <div style="font-weight:bold">DB {slot}</div>
-            <div><a href="{baseURL}/board/{id}">{id}</a></div>
-            <div>{?location}@{location}{/location}</div>
-            <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+          <td style="border-bottom:solid 1px black;">
+            <div style="font-weight:bold">
+              DB {slot}
+              <a onclick="reconfig('{id}', '{crate_id}/{fec_slot}/{slot}');">
+                <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
+              </a>
+            </div>
+            <div><a href="{baseURL}/board/{id}">{id}</a>&nbsp;</div>
+            <div id="location-{id}">&nbsp;</div>
+            <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
           </td>
         </tr>
         {/dbs}
       </table>
     </td>
     {/fecs}
-    {#xl3}
-    <td rowspan="2" style="border:solid 5px black;padding:0px" class="{status}">
+    <td rowspan="2" style="border:solid 5px black;padding:0px">
       <div style="background:#c00;color:white;font-weight:bold;padding:5px">
-        <div style="font-weight:bold;">XL3</div>
-        <div><a href="{baseURL}/board/{id}">{id}</a></div>
-        <div>{?location}@{location}{/location}</div>
-        <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+        <div style="font-weight:bold;">
+          XL3
+          <a onclick="reconfig('{.}', '{crate_id}');">
+            <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
+          </a>
+        </div>
+        {#xl3}
+        <div><a href="{baseURL}/board/{.}">{.}</a></div>
+        <div id="location-{.}">&nbsp;</div>
+        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_blank.png">
+        {/xl3}
       </div>
       <div style="margin:5px;">&nbsp;</div>
     </td>
-    {/xl3}
   </tr>
   <tr>
     {#pmtics}
-    <td style="border:solid 5px black;" class="{status}">
-      <div style="font-weight:bold">PMTIC {slot}</div>
+    <td style="border:solid 5px black;">
+      <div style="font-weight:bold">
+        PMTIC {slot}
+        <a onclick="reconfig('{id}', '{crate_id}/{slot}');">
+          <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
+        </a>
+      </div>
       <div><a href="{baseURL}/board/{id}">{id}</a></div>
-      <div>{?location}@{location}{/location}</div>
-      <a href="{baseURL}/tag/{id}"><img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png"></a>
+      <div id="location-{id}">&nbsp;</div>
+      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
     </td>
     {/pmtics}
   </tr>
 </table>
-{/boards}
 
