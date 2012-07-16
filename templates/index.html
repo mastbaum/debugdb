@@ -5,16 +5,18 @@
         <a href="{baseURL}/boards" style="text-decoration:underline;">Boards</a><br/>
         <input type="text" size="4" id="quick-board-id"/> <button id="quick-board-submit">&#187;</button>
       </h1>
-      <h1 style="margin-top:15px;margin-bottom:20px">
-        <a href="{baseURL}/crates" style="text-decoration:underline;">Crates</a><br/>
-        <input type="text" size="4" id="quick-crate-id"/> <button id="quick-crate-submit">&#187;</button>
+      <h1 style="margin-top:15px;">
+        <a href="{baseURL}/detector" style="text-decoration:underline;">Crates</a><br/>
+          <input type="text" size="4" id="quick-crate-id"/> <button id="quick-crate-submit">&#187;</button>
+        </h1>
+        <a href="{baseURL}/spares" style="text-decoration:underline;font-size:larger">Spares</a>
       </h1>
       <h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/ecals" style="text-decoration:underline">ECALs</a></h1>
       <h1 style="margin-top:15px;margin-bottom:20px"><a href="{baseURL}/logbook" style="text-decoration:underline">Debugging Log Book</a></h1>
       <h1>Tests</h1>
       <a href="{baseURL}/tests" style="text-decoration:underline;font-size:larger">By Name</a><br/>
       <a href="{baseURL}/fecs" style="text-decoration:underline;font-size:larger">By FEC</a><br/>
-      <a href="{baseURL}/dbs" style="text-decoration:underline;font-size:larger">By Daughterboard</a><br/>
+      <a href="{baseURL}/dbs" style="text-decoration:underline;font-size:larger">By Daughterboard</a><br/><br/>
     </div>
     <div style="width:50%;display:table-cell;text-align:center;border:dashed 1px #ccc;vertical-align:middle;padding-bottom:5px">
       {?rows}
