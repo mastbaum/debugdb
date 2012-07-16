@@ -1,0 +1,77 @@
+<h1>Detector</h1>
+
+<style>
+  .board { display: block; height: 100%; padding: 0px; margin: 0px; margin-right: 0px; background: white; border: solid 1px black }
+  .bc { height: 100%; border: none; padding: 0px; margin: 0px; }
+  .ctc { width: 4px; height: 112px}
+  .missing { border: dashed 1px black; }
+  .xl3 { width: 4px; height: 112px; }
+  .fec { width: 8px; height: 100px; }
+  .pmtic { width: 8px; height: 10px; }
+  .db { width: 4px; margin-left: 1px; margin-top: 1px; margin-bottom: 1px; height: 16px; }
+  .db-missing { width: 4px; margin-left: 1px; margin-top: 1px; margin-bottom: 1px; height: 16px; background: white; border: dashed 1px black; }
+  .missing { border: dashed 1px black; }
+  a { height: 100%; }
+  #crate-0 { position: absolute; left: 1010px; top: 100px; }
+  #crate-1 { position: absolute; left: 1010px; top: 250px; }
+  #crate-2 { position: absolute; left: 760px; top: 50px; }
+  #crate-3 { position: absolute; left: 760px; top: 200px; }
+  #crate-4 { position: absolute; left: 510px; top: 40px; }
+  #crate-5 { position: absolute; left: 260px; top: 50px; }
+  #crate-6 { position: absolute; left: 260px; top: 200px; }
+  #crate-7 { position: absolute; left: 10px; top: 100px; }
+  #crate-8 { position: absolute; left: 10px; top: 250px; }
+  #crate-9 { position: absolute; left: 10px; top: 450px; }
+  #crate-10 { position: absolute; left: 10px; top: 600px; }
+  #crate-11 { position: absolute; left: 210px; top: 650px; }
+  #crate-12 { position: absolute; left: 410px; top: 550px; }
+  #crate-13 { position: absolute; left: 410px; top: 700px; }
+  #crate-14 { position: absolute; left: 610px; top: 550px; }
+  #crate-15 { position: absolute; left: 610px; top: 700px; }
+  #crate-16 { position: absolute; left: 810px; top: 650px; }
+  #crate-17 { position: absolute; left: 1010px; top: 450px; }
+  #crate-18 { position: absolute; left: 1010px; top: 600px; }
+  #pez { position: absolute; left: 515px; top: 300px; width: 150px; }
+</style>
+<img src="{baseURL}/static/images/pez.gif" id="pez"/>
+
+{#crates}
+<div id="crate-{id}" style="width:172px;">
+  <table>
+    <tr>
+      <td rowspan="2" class="bc">
+        {?ctc}<a href="{baseURL}/board/{ctc}">{/ctc}<span class="board ctc{?ctc}{:else} missing{/ctc}" id="{ctc}"></span>{?ctc}</a>{/ctc}
+      </td>
+      {#fecs}
+      <td class="bc">
+        {?id}<a href="{baseURL}/board/{id}">{/id}<span class="board fec{?id}{:else} missing{/id}" id="{id}">
+          <table>
+            {#dbs}
+            <tr>
+              <td class="bc">
+                {?.}<a href="{baseURL}/board/{.}">{/.}<span style="display:inline-block;" class="board db{?.}{:else} db-missing{/.}" id="{.}"></span>{?.}</a>{/.}
+              </td>
+            </tr>
+            {/dbs}
+          </table>
+          {?id}</a>{/id}
+        </span>
+      </td>
+      {/fecs}
+      <td rowspan="2" class="bc">
+        {?xl3}<a href="{baseURL}/board/{xl3}">{/xl3}<span class="board xl3{?xl3}{:else} missing{/xl3}" id="{xl3}"></span>{?xl3}</a>{/xl3}
+      </td>
+    </tr>
+    <tr>
+      {#pmtics}
+      <td class="bc">
+        {?.}<a href="{baseURL}/board/{.}">{/.}<span class="board pmtic {?.}{:else} missing{/.}" id="{.}"></span>{?.}</a>{/.}
+      </td>
+      {/pmtics}
+    </tr>
+  </table>
+  <div style="text-align:center"><a href="{baseURL}/crate/{id}"><strong>Crate {id}</strong></a></h2></div>
+</div>
+<br/>
+{/crates}
+
