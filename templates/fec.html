@@ -1,7 +1,8 @@
+<form action="" method="POST">
 <div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
   <div style="display:table-row">
     <div style="display:table-cell">
-      <h1 style="color:black;">FEC Document {_id}</h1><br/>
+      <h1 style="color:black;">FEC Document {_id} <input type="submit" value="Save"/></h1><br/>
       <h3 style="color:black;margin-top:-6px">Generated: {timestamp_generated}</h3>
       <h3 style="color:black;margin-top:-6px">ECAL Time: {timestamp_ecal}</h3>
     </div>
@@ -12,10 +13,19 @@
 <dl>
   <dt>Approval</dt>
   <dd>{?approved}Approved{:else}Not approved{/approved}</dd>
+  <dt>Edited</dt>
+  <dd>{?edited_date}Yes ({edited_date}){:else}No{/edited_date}
   <dt>ECAL</dt>
   <dd><a href="{baseURL}/ecal/{ecal_id}">{ecal_id}</a></dt>
   <dt>Comments</dt>
-  <dd>{comment}</dd>
+  <dd>
+  <ul>
+    {#comment}
+    <li>{.}</li>
+    {/comment}
+    <li><input type="text" name="comment"/></li>
+  </ul>
+  </dd>
 </dl>
 
 <h2>Configuration</h2>
@@ -52,8 +62,7 @@
   </tr>
 </table>
 
-<form action="" method="POST">
-<h2>Hardware Settings <input type="submit" value="Save"/></h2>
+<h2>Hardware Settings</h2>
 <table>
   <tr>
     <th>Vint DAC</th>
