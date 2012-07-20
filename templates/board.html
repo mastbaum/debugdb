@@ -112,7 +112,9 @@
                   <div id="confirm-delete-{_id}" style="display:none;color:black;padding:15px">
                     Really delete tag {_id}?<br/><br/>
                     <div style="width:100%;text-align:center">
-                      <a href="{baseURL}/tag_delete/{_id}" onClick="Boxy.get(this).hide()">Delete</a>
+                      <form action="{baseURL}/tag_delete/{_id}" method="POST">
+                        <input type="submit" onClick="Boxy.get(this).hide()" value="Delete"/>
+                      </form>
                     </div>
                   </div>
                 </td>
@@ -198,7 +200,7 @@
         </tr>
         {#fec_docs}
         <tr>
-          <td><a href="#" onclick="window.location.href='/debugdb/{id}'">FEC</a></td>
+          <td><a href="{baseURL}/fec/{id}">FEC</a></td>
           <td>{created}</td>
         </tr>
         {/fec_docs}

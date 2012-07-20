@@ -1,0 +1,244 @@
+<div style="display:table;border:dashed 1px #aaa;padding:5px;background:#eee;vertical-align:middle">
+  <div style="display:table-row">
+    <div style="display:table-cell">
+      <h1 style="color:black;">FEC Document {_id}</h1><br/>
+      <h3 style="color:black;margin-top:-6px">Generated: {timestamp_generated}</h3>
+      <h3 style="color:black;margin-top:-6px">ECAL Time: {timestamp_ecal}</h3>
+    </div>
+  </div>
+</div>
+
+<h2>Metadata</h2>
+<dl>
+  <dt>Approval</dt>
+  <dd>{?approved}Approved{:else}Not approved{/approved}</dd>
+  <dt>ECAL</dt>
+  <dd><a href="{baseURL}/ecal/{ecal_id}">{ecal_id}</a></dt>
+  <dt>Comments</dt>
+  <dd>{comment}</dd>
+</dl>
+
+<h2>Configuration</h2>
+<dl>
+  <dt>Crate: <a href="{baseURL}/crate/{crate}">{crate}</a></dt>
+  <dt>Slot: <a href="{baseURL}/crate/{crate}">{card}</a></dt>
+  <dt>FEC: <a href="{baseURL}/board/{board_id}">{board_id}</a></dt>
+  <dt>PMTIC: <a href="{baseURL}/board/{id.hv}">{id.hv}</a></dt>
+  <dt>Daughterboards</dt>
+  <dd>
+  <ul>
+    <li><a href="{baseURL}/board/{id.db0}">{id.db0}</a></li>
+    <li><a href="{baseURL}/board/{id.db1}">{id.db1}</a></li>
+    <li><a href="{baseURL}/board/{id.db2}">{id.db2}</a></li>
+    <li><a href="{baseURL}/board/{id.db3}">{id.db3}</a></li>
+  </ul>
+  <dt>Relays: {#relay_on}{?.}ON{:else}OFF{/.} {/relay_on}</dt>
+  </dd>
+</dl>
+
+<h2>Problems</h2>
+<table style="text-align:center">
+  <tr>
+    <th></th>
+    {#channel_ids}<th>{.}</th>{/channel_ids}
+  </tr>
+  <tr>
+    <td>Channel</td>
+    {#channel.problem}<td>{.}</td>{/channel.problem}
+  </tr>
+  <tr>
+    <td>PMT</td>
+    {#tube.problem}<td>{.}</td>{/tube.problem}
+  </tr>
+</table>
+
+<form action="" method="POST">
+<h2>Hardware Settings <input type="submit" value="Save"/></h2>
+<table>
+  <tr>
+    <th>Vint DAC</th>
+    <td>{hw.vint}</td>
+  </tr>
+  <tr>
+    <th>HVref DAC</th>
+    <td>{hw.hvref}</td>
+  </tr>
+  <tr>
+    <th>NHIT100 Trigger</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Mask</th>
+         {#hw.tr100.mask}<td>{.}</td>{/hw.tr100.mask}
+       </tr>
+       <tr>
+         <th>Delay</th>
+         {#hw.tr100.delay}<td>{.}</td>{/hw.tr100.delay}
+       </tr>
+     </table>
+    </td>
+  </tr>
+  <tr>
+    <th>NHIT20 Trigger</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Mask</th>
+         {#hw.tr20.mask}<td>{.}</td>{/hw.tr20.mask}
+       </tr>
+       <tr>
+         <th>Delay</th>
+         {#hw.tr20.delay}<td>{.}</td>{/hw.tr20.delay}
+       </tr>
+       <tr>
+         <th>Width</th>
+         {#hw.tr20.width}<td>{.}</td>{/hw.tr20.width}
+       </tr>
+     </table>
+    </td>
+  </tr>
+  <tr>
+    <th>SCMOS</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Value</th>
+         {#hw.scmos}<td>{.}</td>{/hw.scmos}
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <th>VBAL</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Low</th>
+         {#vballo}<td>{.}</td>{/vballo}
+       </tr>
+       <tr>
+         <th>High</th>
+         {#vbalhi}<td>{.}</td>{/vbalhi}
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <th>Tdisc</th>
+    <td>
+     <table>
+       <tr>
+         <th>Chip</th>
+         {#chip_ids}<th>{.}</th>{/chip_ids}
+       </tr>
+       <tr>
+         <th>RMPUP</th>
+         {#hw.tdisc.rmpup}<td>{.}</td>{/hw.tdisc.rmpup}
+       </tr>
+       <tr>
+         <th>VSI</th>
+         {#hw.tdisc.vsi}<td>{.}</td>{/hw.tdisc.vsi}
+       </tr>
+       <tr>
+         <th>VLI</th>
+         {#hw.tdisc.vli}<td>{.}</td>{/hw.tdisc.vli}
+       </tr>
+       <tr>
+         <th>RMP</th>
+         {#hw.tdisc.rmp}<td>{.}</td>{/hw.tdisc.rmp}
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <th>TCMOS</th>
+    <td>
+     <table>
+       <tr>
+         <th>Vmax</th>
+         <td>{hw.tcmos.vmax}</td>
+       </tr>
+       <tr>
+         <th>VTACref</th>
+         <td>{hw.tcmos.vtacref}</td>
+       </tr>
+       <tr>
+         <th>Iseta</th>
+         <td>{#hw.tcmos.iseta}{.} {/hw.tcmos.iseta}</td>
+       </tr>
+       <tr>
+         <th>Isetm</th>
+         <td>{#hw.tcmos.isetm}{.} {/hw.tcmos.isetm}</td>
+       </tr>
+       <tr>
+         <th>TAC trim</th>
+         <td>
+           <table>
+             <tr>
+               {#channel_ids}<th>{.}</th>{/channel_ids}
+             </tr>
+             <tr>
+               {#hw.tcmos.tac_trim}<td>{.}</td>{/hw.tcmos.tac_trim}
+             </tr>
+           </table>
+         </td>
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <th>VTHR zero</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Value</th>
+         {#hw.vthr_zero}<td>{.}</td>{/hw.vthr_zero}
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <th>VTHR threshold</th>
+    <td>
+     <table>
+       <tr>
+         <th>Channel</th>
+         {#channel_ids}<th>{.}</th>{/channel_ids}
+       </tr>
+       <tr>
+         <th>Value</th>
+         {#vthrs}<td><input type="number" name="vthr_{id}" value="{vthr}" style="width:3em"/></td>{/vthrs}
+       </tr>
+     </table>
+   </td>
+  </tr>
+</table>
+</form>
+
+<h2><a href="{baseURL}/ecal/{ecal_id}">Tests</a></h2>
+<ul>
+  {#tests}
+  <li><a href="{baseURL}/{type}/{id}">{type}</a></li>
+  {/tests}
+</ul>
+
