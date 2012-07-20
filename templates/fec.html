@@ -233,10 +233,12 @@
        <tr>
          <th>Channel</th>
          {#channel_ids}<th>{.}</th>{/channel_ids}
+         <td style="font-weight:bold;color:#600">Override checks</td>
        </tr>
        <tr>
          <th>Value</th>
-         {#vthrs}<td><input type="number" name="vthr_{id}" value="{vthr}" style="width:3em"/></td>{/vthrs}
+         {#vthrs}<td><input type="number" max="255" min="0" name="vthr_{id}" value="{vthr}" style="width:3em"/></td>{/vthrs}
+         <td style="text-align:center"><input type="checkbox" name="override"/></td>
        </tr>
      </table>
    </td>
