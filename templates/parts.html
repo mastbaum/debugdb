@@ -1,0 +1,42 @@
+<h1>Spare Parts</h1>
+<a href="{baseURL}/part/new"><span style="display:inline-block;vertical-align:bottom" class="ui-icon ui-icon-circle-plus"></span> Add new part</a>
+<br/>
+{#parts}
+<form action="{baseURL}/part/{_id}" method="POST">
+  <table>
+    <tr>
+      {!
+      <td rowspan="2" style="width:100px">
+        <img src="{baseURL}/static/images/{name}"/>
+      </td>
+      !}
+      <td>
+        <span style="font-size:14pt;font-weight:bold">{name}</span>&nbsp;
+        <span style="font-size:8pt;font-weight:bold;color:gray;text-transform:uppercase">
+          {description}&nbsp;
+          <button type="submit" style="padding:0px;vertical-align:bottom">
+            <span class="ui-icon ui-icon-disk"></span>
+          </button>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          {#locations}
+          <tr>
+            <th style="vertical-align:middle">{name}
+            </th>
+            <td>
+              <input type="number" style="width:5em" name="{name}" value="{quantity}"/>
+            </td>
+          </tr>
+          {/locations}
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<br/><br/>
+{/parts}
+
