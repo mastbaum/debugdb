@@ -1,4 +1,9 @@
 <style>
+  .checkbox-grid li {
+    display: inline-block;
+    float: left;
+    width: 12%;
+  }
   .gold {
     background: gold;
   }
@@ -62,12 +67,21 @@
           <option value="other" {?location.other}selected{/location.other}>Other</option>
         </select>
         <input type="text" name="location_detail" value="{location_detail}"/>
+        {?relays}
+        <h3>Relays</h3>
+        {#relays}
+        <input type="checkbox" name="relay{id}" {?good}checked{/good}/>&nbsp;
+        {/relays}
+        {/relays}
         {?channels}
         <h3>Channels</h3>
+        <ul class="checkbox-grid">
         {#channels}
-        <input type="checkbox" name="channel{id}" {?good}checked{/good}/>&nbsp;
+        <li><input type="checkbox" name="channel{id}" {?good}checked{/good}/></li>
         {/channels}
+        </ul>
         {/channels}
+        <br/>
         <h3>Notes</h3>
         <textarea name="comments" cols="35" rows="7">{comments}</textarea>
         <h3>Configuration</h3>
