@@ -3,6 +3,8 @@
   .archived {display:none}
 </style>
 <h1>All tests for {system_name} {?isaboard}<a href="{baseURL}/board/{system_id}">{/isaboard}{system_id}{?isaboard}</a>{/isaboard}</h1>
+{?enable_prev}<a href="/debugdb/history?skip={skip_prev}">{/enable_prev}Previous{?enable_prev}</a>{/enable_prev} |
+<a href="/debugdb/history?skip={skip_next}">Next</a>
 <div style="padding:10px;font-weight:bold;"><input type="checkbox" onclick="$('.archived').toggle()"/> Show archived tests</div>
 <table>
   <tr>
@@ -41,6 +43,8 @@
   </tr>
   {/rows}
 </table>
+{?enable_prev}<a href="/debugdb/history?skip={skip_prev}">{/enable_prev}Previous{?enable_prev}</a>{/enable_prev} |
+<a href="/debugdb/history?skip={skip_next}">Next</a>
 {:else}
 <h1>No tests found</h1>
 {/rows}
