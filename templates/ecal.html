@@ -139,7 +139,7 @@
         <tr>
           {#mb_id}
           <th>FEC</th>
-          <td><a href="{baseURL}/board/{mb_id}">{mb_id}</a></td>
+          <td><span id="fec_id__{crate_id}_{slot_id}"><a href="{baseURL}/board/{mb_id}">{mb_id}</a></span></td>
           {/mb_id}
         </tr>
         <tr>
@@ -147,10 +147,10 @@
           <th style="border-bottom:none;">DBs</th>
           <td style="border-bottom:none;">
             <ol>
-              <li><a href="{baseURL}/board/{db0_id}">{db0_id}</a></li>
-              <li><a href="{baseURL}/board/{db1_id}">{db1_id}</a></li>
-              <li><a href="{baseURL}/board/{db2_id}">{db2_id}</a></li>
-              <li><a href="{baseURL}/board/{db3_id}">{db3_id}</a></li>
+              <li id="db_id__{crate_id}_{slot_id}_0"><a href="{baseURL}/board/{db0_id}">{db0_id}</a></li>
+              <li id="db_id__{crate_id}_{slot_id}_1"><a href="{baseURL}/board/{db1_id}">{db1_id}</a></li>
+              <li id="db_id__{crate_id}_{slot_id}_2"><a href="{baseURL}/board/{db2_id}">{db2_id}</a></li>
+              <li id="db_id__{crate_id}_{slot_id}_3"><a href="{baseURL}/board/{db3_id}">{db3_id}</a></li>
             </ol>
           </td>
           {/db0_id}
