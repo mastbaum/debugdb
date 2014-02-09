@@ -6,7 +6,7 @@
   .silver { background: silver; color: black; }
   .bad { background: #f66; color: black; }
   .bone { background: black; color: white; }
-  img.tag {width: 35px; margin-top: 2px; margin-bottom: 2px; }
+  img.tag {width: 15px; margin-top: 5px; margin-bottom: 5px; }
 </style>
 
 <script>
@@ -47,10 +47,10 @@ function reconfig(board, loc) {
 
 <table style="white-space:nowrap;text-align:center;">
   <tr>
-    <td rowspan="2" style="border:solid 5px black;padding:0px">
-      <div style="background:black;color:white;font-weight:bold;padding:5px">
+    <td rowspan="2" style="border:solid 3px black;padding:0px">
+      <div style="background:black;color:white;font-weight:bold;padding:3px">
         <div style="font-weight:bold;">
-          CTC
+          CTC<br/>
           <a onclick="reconfig('{.}', '{crate_id}');">
             <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
           </a>
@@ -58,44 +58,44 @@ function reconfig(board, loc) {
         {#ctc}
         <div><a href="{baseURL}/board/{.}">{.}</a></div>
         <div id="location-{.}">&nbsp;</div>
-        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_blank.png">
+        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_none.png">
         {/ctc}
       </div>
     </td>
     {#fecs}
-    <td style="border:solid 5px black;">
+    <td style="border:solid 3px black;">
       <div style="font-weight:bold">
-        FEC {slot}
+        FEC {slot}<br/>
         <a onclick="reconfig('{id}', '{crate_id}/{slot}');">
           <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
         </a>
       </div>
       <div><a href="{baseURL}/board/{id}">{id}</a>&nbsp;</div>
       <div id="location-{id}">&nbsp;</div>
-      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
-      <table style="border:solid 3px black">
+      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_none.png">
+      <table style="border:solid 2px black">
         {#dbs fec_slot=slot}
         <tr>
           <td style="border-bottom:solid 1px black;">
             <div style="font-weight:bold">
-              DB {slot}
+              DB {slot}<br/>
               <a onclick="reconfig('{id}', '{crate_id}/{fec_slot}/{slot}');">
                 <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
               </a>
             </div>
             <div><a href="{baseURL}/board/{id}">{id}</a>&nbsp;</div>
             <div id="location-{id}">&nbsp;</div>
-            <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
+            <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_none.png">
           </td>
         </tr>
         {/dbs}
       </table>
     </td>
     {/fecs}
-    <td rowspan="2" style="border:solid 5px black;padding:0px">
-      <div style="background:#c00;color:white;font-weight:bold;padding:5px">
+    <td rowspan="2" style="border:solid 3px black;padding:0px">
+      <div style="background:#c00;color:white;font-weight:bold;padding:3px">
         <div style="font-weight:bold;">
-          XL3
+          XL3 <br/>
           <a onclick="reconfig('{.}', '{crate_id}');">
             <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
           </a>
@@ -103,24 +103,24 @@ function reconfig(board, loc) {
         {#xl3}
         <div><a href="{baseURL}/board/{.}">{.}</a></div>
         <div id="location-{.}">&nbsp;</div>
-        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_blank.png">
+        <img class="tag" id="tag-{.}" src="{baseURL}/static/images/tag_none.png">
         {/xl3}
       </div>
-      <div style="margin:5px;">&nbsp;</div>
+      <div style="margin:3px;">&nbsp;</div>
     </td>
   </tr>
   <tr>
     {#pmtics}
-    <td style="border:solid 5px black;">
+    <td style="border:solid 3px black;">
       <div style="font-weight:bold">
-        PMTIC {slot}
+        PMTIC {slot}<br/>
         <a onclick="reconfig('{id}', '{crate_id}/{slot}');">
           <span style="vertical-align:-3px;display:inline-block" class="ui-icon ui-icon-shuffle"></span>
         </a>
       </div>
       <div><a href="{baseURL}/board/{id}">{id}</a></div>
       <div id="location-{id}">&nbsp;</div>
-      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_blank.png">
+      <img class="tag" id="tag-{id}" src="{baseURL}/static/images/tag_none.png">
     </td>
     {/pmtics}
   </tr>
